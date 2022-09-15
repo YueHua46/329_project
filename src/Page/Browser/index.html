@@ -1,0 +1,1397 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title></title>
+    <!-- <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+      integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu"
+      crossorigin="anonymous"
+    /> -->
+    <style type="text/css">
+      html,
+      body {
+        height: 100%;
+        background-color: #e7e7ea;
+      }
+
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+
+      .box,
+      .gd {
+        height: 100%;
+      }
+
+      .triangle {
+        width: 0;
+        height: 0;
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+        border-bottom: 10px solid skyblue;
+      }
+
+      .gd {
+        width: 160px;
+        border: 2px solid black;
+        padding: 7px;
+      }
+      .gd-list {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        background-color: #fff;
+      }
+      .gd-item {
+        display: flex;
+        justify-content: center;
+        gap: 5px;
+        margin-bottom: 5px;
+        padding-bottom: 5px;
+        border-bottom: 1px solid #e2e2e5;
+      }
+
+      .gd-item > img {
+        width: 30px;
+        height: 30px;
+      }
+      .gd-item > p {
+      }
+      .gd-item > p > span:first-of-type {
+        color: #000;
+        font-weight: bold;
+        font-size: 12px;
+        line-height: 1.1;
+        width: 80px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+      }
+      .gd-item > p > span:last-of-type {
+        color: #585f65;
+        line-height: 1.3;
+        font-size: 11px;
+      }
+      .gd-title {
+      }
+      .gd-title > .title {
+        display: block;
+        border-radius: 4px 4px 0 0;
+        background-color: #3f3a60;
+        padding: 7px;
+        margin-bottom: 0;
+        font-size: 11px;
+        text-transform: uppercase;
+        font-weight: 600;
+        color: #fff;
+        line-height: 1;
+        transition: all 0.2s ease-in-out;
+      }
+      .gd-title > div:last-of-type {
+        font-size: 11px;
+        margin-top: 5px;
+        margin-left: 5px;
+      }
+
+      /* 上面是左侧的 */
+      .main {
+        display: flex;
+        border-radius: 5px;
+        background-color: white;
+        width: 100%;
+        margin: 10px 10px;
+        padding: 20px;
+        gap: 10px;
+      }
+      .content {
+        display: flex;
+      }
+      .sub {
+        height: 44.43px;
+        margin: 0 0 10px;
+        padding: 10px;
+        color: #000;
+        font: 15px;
+        background: #f7f7f8;
+        display: flex;
+        gap: 10px;
+        border: 2px solid #d1d4d7;
+        border-radius: 5px;
+      }
+      .ano {
+        background: #d71925;
+        color: white;
+
+        height: 30px;
+        border-radius: 5px;
+        padding: 0 10px;
+      }
+      .fmain {
+        border: 1px solid black;
+      }
+      /* 下面是右边代码选择器部分 */
+      .triangle1 {
+        width: 0;
+        height: 0;
+        border-top: 10px solid skyblue;
+        border-right: 5px solid transparent;
+        border-left: 5px solid transparent;
+      }
+      .rmain {
+        width: 50%;
+      }
+      .rmain > div {
+        border-radius: 7px;
+        border: 0.5px solid #d1d4d7;
+      }
+      .r0 {
+      }
+      .r1 {
+        margin: 30px 0px;
+      }
+      .gd-item-title {
+        display: flex;
+        justify-content: space-between;
+        height: 30px;
+        padding: 5px;
+        background-color: #3f3a60;
+        color: white;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+      }
+      .gd-item-title > div:first-of-type {
+        font-size: 14px;
+        font-weight: bold;
+      }
+      .gd-item-title > div {
+        display: flex;
+      }
+      .gd-item-title img {
+        width: 15px;
+      }
+      .gd-item-title > div:last-of-type {
+        gap: 10px;
+        align-gd-items: center;
+      }
+      .gd-item-title .triangle1 {
+        /* margin-top: 5px; */
+        border-top: 5px solid #aaa9b3;
+      }
+
+      .gd-item-type {
+        background-color: #2a2740;
+        color: white;
+        padding: 4px;
+        font-size: 12px;
+        display: flex;
+        gap: 4px;
+        align-gd-items: center;
+      }
+      .gd-item-type > .triangle1 {
+        /* display: block; */
+        border-top: 5px solid #aaa9b3;
+      }
+      .gd-item-context {
+        padding: 10px;
+        border-bottom: 0.5px solid #d1d4d7;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+      }
+      a {
+        text-decoration: none;
+      }
+      .gd-item-context p,
+      .gd-item-context a {
+        font-size: 12px;
+      }
+      .gd-item-context > a:first-of-type {
+        color: black;
+        font-weight: bold;
+      }
+      .gd-item-context p {
+        color: #666e75;
+      }
+      .gd-item-context a:last-of-type {
+        display: flex;
+        gap: 10px;
+      }
+      .gd-item-context a:last-of-type img {
+        width: 10px;
+        height: 10px;
+      }
+      .gd-item-context svg {
+        fill: #666e75;
+      }
+
+      /* 中间部分css样式 */
+      .centerimg > img {
+        width: 15px;
+      }
+      .gd-item-type-c {
+        display: flex;
+        justify-content: right;
+        background-color: #2a2740;
+        color: white;
+
+        font-size: 12px;
+        padding: 5px;
+        gap: 4px;
+        align-gd-items: center;
+      }
+
+      /* 右边图片部分 */
+      .right-img-port {
+        display: flex;
+        justify-content: space-between;
+        font-size: 12px;
+        background-color: #2a2740;
+        color: white;
+      }
+      .container {
+        display: grid;
+        grid-template-rows: 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 5px;
+      }
+      .container > img {
+        cursor: pointer;
+        width: 100%;
+        transition: opacity 0.2s ease-in-out;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+      .container > img:hover {
+        opacity: 0.75;
+      }
+
+      /* a:hover {
+        color: blue;
+        text-decoration: underline;
+      } */
+
+      /* 页面底部部分 */
+      .footer {
+        margin: 30px 5px;
+      }
+      ul {
+        display: flex;
+        justify-content: center;
+        list-style-type: none;
+        gap: 30px;
+      }
+      a {
+        color: black;
+      }
+      a:hover {
+        color: blue;
+        text-decoration: underline;
+      }
+
+      /* header css */
+      header {
+        display: flex;
+        justify-content: space-between;
+        height: 70px;
+        background-color: #3f3a60;
+        padding: 10px;
+        font-weight: bold;
+      }
+      header .header-left {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+      }
+      header .header-left .header-menu {
+        display: flex;
+        margin-left: 10px;
+      }
+      header .header-left .header-list {
+        display: flex;
+        gap: 20px;
+        margin-left: 20px;
+      }
+      header .header-left .header-list a {
+        color: white !important;
+      }
+      header .header-left .header-list a:hover {
+        opacity: 0.75;
+      }
+      header .header-right {
+        display: flex;
+        align-items: center;
+      }
+      header .header-right ul {
+        display: flex;
+        gap: 20px;
+        align-items: center;
+      }
+      header .header-right ul li a {
+        color: white !important;
+      }
+      header .header-right ul li a:hover {
+        opacity: 0.75;
+      }
+      header .header-right ul .header-search {
+        display: flex;
+        height: 28px;
+        align-items: center;
+      }
+      header .header-right ul .header-search span {
+        font-size: 16px;
+        display: flex;
+        align-items: center;
+        left: 20px;
+        color: #9ca2a8 !important;
+      }
+      header .header-right ul .header-search input {
+        border-radius: 5px;
+        border: none;
+        padding-left: 28px;
+        height: 25px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <div class="header-left">
+        <div class="header-menu">
+          <span class="glyphicon glyphicon-list" style="color: white"> </span>
+        </div>
+        <div class="header-logo">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="80"
+            height="38"
+            viewBox="0 0 80 38"
+          >
+            <g fill="none" fillRule="evenodd">
+              <path
+                fill="#FFF"
+                d="M41.6414127,20.8453307 C41.6414127,20.7138507 41.5623149,20.5562773 41.377073,20.5562773 L37.2504649,20.5562773 L37.2504649,24.470024 L41.377073,24.470024 C41.5623149,24.470024 41.6414127,24.338544 41.6414127,24.2073173 L41.6414127,20.8453307 Z M41.6414127,13.911344 C41.6414127,13.779864 41.5623149,13.622544 41.377073,13.622544 L37.2504649,13.622544 L37.2504649,17.2996773 L41.377073,17.2996773 C41.5623149,17.2996773 41.6414127,17.1681973 41.6414127,17.0103707 L41.6414127,13.911344 Z M32.6737649,27.8317573 L32.6737649,10.1032373 L43.6783083,10.1032373 C45.1334524,10.1032373 46.0591517,11.0223307 46.0591517,12.3353573 L46.0591517,16.2754507 C46.0591517,17.483344 45.2656223,18.6390507 43.6257465,19.0332373 C45.2656223,19.4269173 46.1915767,20.530184 46.1915767,21.7122373 L46.1915767,25.5730373 C46.1915767,26.9648507 45.2656223,27.8317573 43.8107333,27.8317573 L32.6737649,27.8317573 Z M57.7535044,16.9530667 L62.7609046,16.9530667 L62.7609046,25.8040267 C62.7609046,26.9597333 61.8619965,27.8263867 60.7242641,27.8263867 L51.7828972,27.8263867 C50.64542,27.8263867 49.7194656,26.9597333 49.7194656,25.8040267 L49.7194656,12.09388 C49.7194656,11.01696 50.64542,10.0978667 51.7828972,10.0978667 L62.7609046,10.0978667 L62.7609046,13.9062267 L54.5602501,13.9062267 C54.4280803,13.9062267 54.2959104,14.0374533 54.2959104,14.19528 L54.2959104,23.7031333 C54.2959104,23.8604533 54.4280803,23.9655867 54.5602501,23.9655867 L58.2640678,23.9655867 C58.4490546,23.9655867 58.5549435,23.8604533 58.5549435,23.7031333 L58.5549435,20.7087333 L56.1478193,20.7087333 L57.7535044,16.9530667 Z M74.3228322,16.9530667 L79.3304876,16.9530667 L79.3304876,25.8040267 C79.3304876,26.9597333 78.4313244,27.8263867 77.2938472,27.8263867 L68.3524802,27.8263867 C67.2147479,27.8263867 66.2890486,26.9597333 66.2890486,25.8040267 L66.2890486,12.09388 C66.2890486,11.01696 67.2147479,10.0978667 68.3524802,10.0978667 L79.3304876,10.0978667 L79.3304876,13.9062267 L71.1298332,13.9062267 C70.9976633,13.9062267 70.8652383,14.0374533 70.8652383,14.19528 L70.8652383,23.7031333 C70.8652383,23.8604533 70.9976633,23.9655867 71.1298332,23.9655867 L74.8333957,23.9655867 C75.0186376,23.9655867 75.1245266,23.8604533 75.1245266,23.7031333 L75.1245266,20.7087333 L72.7171472,20.7087333 L74.3228322,16.9530667 Z"
+              />
+              <polygon
+                fill="#FF5100"
+                points="24.87 7.01 21.107 8.035 24.792 0 .9 8.794 2.206 19.327 0 21.454 6.577 37.93 20.558 32.779 25.418 21.37 23.331 19.358"
+              />
+            </g>
+          </svg>
+        </div>
+        <ul class="header-list">
+          <li>
+            <a href="#">Browser</a>
+          </li>
+          <li>
+            <a href="#">Forums</a>
+          </li>
+          <li>
+            <a href="../../Page/GeeklistHot/tbsdemo.html">GeekLists</a>
+          </li>
+          <li>
+            <a href="../../Page/ShopGeekMarket/index.html">Shopping</a>
+          </li>
+          <li>
+            <a href="#">Community</a>
+          </li>
+          <li>
+            <a href="../../Page/Help/index.html">Help</a>
+          </li>
+        </ul>
+      </div>
+      <div class="header-right">
+        <ul>
+          <li>
+            <a href="#">Sign In</a>
+          </li>
+          <li>
+            <a href="#">Join!</a>
+          </li>
+          <li class="header-search">
+            <span class="glyphicon glyphicon-search" style="color: #333"></span>
+            <input placeholder="Search" type="text" />
+          </li>
+        </ul>
+      </div>
+    </header>
+    <div class="content">
+      <div class="box">
+        <div class="gd">
+          <div class="gd-list">
+            <div class="gd-title">
+              <div class="title">THE HOTNESS</div>
+              <div>
+                <span>GAME</span>
+              </div>
+            </div>
+            <div class="gd-item">
+              <img src="img/角色扮演极客_files/pic6513546.jpg" />
+              <p>
+                <span>Twilight:2000(4th Edition)</span>
+                <span>2021</span>
+              </p>
+              <span class="triangle"></span>
+            </div>
+            <div class="gd-item">
+              <img src="img\角色扮演极客_files\pic4412609.jpg" />
+              <p>
+                <span>Android:Shadow of the...</span>
+                <span>2018</span>
+              </p>
+              <span class="triangle"></span>
+            </div>
+            <div class="gd-item">
+              <img src="img\角色扮演极客_files\pic503490.jpg" />
+              <p>
+                <span>AI-Qadimland of Fate</span>
+                <span>1992</span>
+              </p>
+              <span class="triangle"></span>
+            </div>
+            <div class="gd-item">
+              <img src="img\角色扮演极客_files\pic2073834.jpg" />
+              <p>
+                <span>Dungeon Dragons Starter Set</span>
+                <span>2014</span>
+              </p>
+              <span class="triangle"></span>
+            </div>
+            <div class="gd-item">
+              <img src="img\角色扮演极客_files\pic5625807.png" />
+              <p>
+                <span>Alice is Missing</span>
+                <span>2020</span>
+              </p>
+              <span class="triangle"></span>
+            </div>
+            <div class="gd-item">
+              <img src="img\角色扮演极客_files\pic7026576.jpg" />
+              <p>
+                <span>Dragonlance:Shadow of the...</span>
+                <span>2022</span>
+              </p>
+              <span class="triangle"></span>
+            </div>
+            <div class="gd-item">
+              <img src="img\角色扮演极客_files\pic613939.jpg" />
+              <p>
+                <span>Call of Cthulhu(6th Edition)</span>
+                <span>2004</span>
+              </p>
+              <span class="triangle"></span>
+            </div>
+            <div class="gd-item">
+              <img src="img\角色扮演极客_files\pic4632921.png" />
+              <p>
+                <span>Shadow of the Demon Lord Core...</span>
+                <span>2015</span>
+              </p>
+              <span class="triangle"></span>
+            </div>
+            <div class="gd-item">
+              <img src="img\角色扮演极客_files\pic7061731.jpg" />
+              <p>
+                <span>Terror in the Old Fell Forest</span>
+                <span>2022</span>
+              </p>
+              <span class="triangle"></span>
+            </div>
+            <div class="gd-item">
+              <img src="img\角色扮演极客_files\pic508035.jpg" />
+              <p>
+                <span>Shadows Over Bogenhafen</span>
+                <span>1987</span>
+              </p>
+              <span class="triangle"></span>
+            </div>
+            <div class="gd-item">
+              <img src="img\角色扮演极客_files\pic502015.jpg" />
+              <p>
+                <span>Mouse Guard Roleplaying Game</span>
+                <span>2008</span>
+              </p>
+              <span class="triangle"></span>
+            </div>
+            <div class="gd-item">
+              <img src="img\角色扮演极客_files\pic2455572.jpg" />
+              <p>
+                <span>Dogs in the Vineyard</span>
+                <span>2004</span>
+              </p>
+              <span class="triangle"></span>
+            </div>
+            <div class="gd-item">
+              <img src="img\角色扮演极客_files\pic498668.jpg" />
+              <p>
+                <span>Ex Machina</span>
+                <span>2004</span>
+              </p>
+              <span class="triangle"></span>
+            </div>
+            <div class="gd-item">
+              <img src="img\角色扮演极客_files\pic512512.jpg" />
+              <p>
+                <span>Dread</span>
+                <span>2004</span>
+              </p>
+              <span class="triangle"></span>
+            </div>
+            <div class="gd-item">
+              <img src="img\角色扮演极客_files\pic515844.jpg" />
+              <p>
+                <span>The Star Wars Sourcebook</span>
+                <span>1987</span>
+              </p>
+              <span class="triangle"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="main">
+        <div style="width: 50%">
+          <!-- 中间上边部分(Subdomain部分) -->
+          <div class="sub">
+            <div style="border-right: 1px solid black">
+              <a href="#">Subdomain:All </a>
+              <!-- <span class="triangle"></span> -->
+            </div>
+            <div><a href="#">Edit Dashboard</a></div>
+          </div>
+
+          <div class="r0">
+            <div class="gd-item-title" style="background-color: red">
+              <div>Anouncements</div>
+            </div>
+
+            <div class="list-context">
+              <div class="gd-item-context">
+                <a href="#"
+                  >RPG Geek of the Week / Month #466: Craig (Guyfumble)
+                </a>
+                <a href="#">
+                  <p>RPGGeek News cannedparrot</p>
+                  <p>
+                    <img src="./img/角色扮演极客_files/点赞.png" alt="" />
+                    <span>15</span>
+                    <img src="./img/角色扮演极客_files/评论 (1).png" alt="" />
+                    <span>17</span>
+                  </p>
+                </a>
+              </div>
+              <div class="gd-item-context">
+                <a href="#"
+                  >Behind the Screen #88: The Immortal Player Character: Raising
+                  the stakes in combat by means other than character death
+                </a>
+                <a href="#">
+                  <p>Game Masters Flyboy Connor</p>
+                  <p>
+                    <img src="./img/角色扮演极客_files/点赞.png" alt="" />
+                    <span>29</span>
+                    <img src="./img/角色扮演极客_files/评论 (1).png" alt="" />
+                    <span>25</span>
+                  </p>
+                </a>
+              </div>
+              <div class="gd-item-context">
+                <a href="#">Fortnightly Feature #9: Kindled Magic </a>
+                <a href="#">
+                  <p>General Role-Playing Hunting_Phoenix</p>
+                  <p>
+                    <img src="./img/角色扮演极客_files/点赞.png" alt="" />
+                    <span>10</span>
+                    <img src="./img/角色扮演极客_files/评论 (1).png" alt="" />
+                    <span>8</span>
+                  </p>
+                </a>
+              </div>
+              <div class="gd-item-context">
+                <a href="#"
+                  >Table Top RPG Crowd-funding Announcement Thread - 2022
+                  Edition</a
+                >
+                <a href="#">
+                  <p>Press Releases Bi</p>
+                  <p>
+                    <img src="./img/角色扮演极客_files/点赞.png" alt="" />
+                    <span>36</span>
+                    <img src="./img/角色扮演极客_files/评论 (1).png" alt="" />
+                    <span>39</span>
+                  </p>
+                </a>
+              </div>
+            </div>
+          </div>
+          <!-- <div class="fmain">
+            <div class="ano">Announcements</div>
+            <div>
+              <a href="#"
+                >RPG Geek of the Week / Month #466: Craig (Guyfumble)</a
+              >
+              <a href="#">RPGGeek News cannedparrot</a>
+            </div>
+            <div>
+              <a href="#">
+                Behind the Screen #88: The Immortal Player Character: Raising
+                the stakes in combat by means other than character death
+              </a>
+              <a href="#">Game Masters Flyboy Connor</a>
+            </div>
+            <div>
+              <a href="#">Fortnightly Feature #9: Kindled Magic</a>
+              <a href="#">General Role-Playing Hunting_Phoenix</a>
+            </div>
+            <div>
+              <a href="#">
+                Table Top RPG Crowd-funding Announcement Thread - 2022 Edition
+              </a>
+              <a href="#">Press Releases Bifford</a>
+            </div>
+          </div> -->
+
+          <div class="r0">
+            <div class="gd-item-title">
+              <div>General Discussion</div>
+              <div>
+                Active
+                <span class="triangle1"></span>
+                <span>
+                  <img src="./img/角色扮演极客_files/left.png" />
+                  <span> 1 </span>
+                  <img src="./img/角色扮演极客_files/right.png" />
+                </span>
+              </div>
+            </div>
+
+            <div class="gd-item-type-c">
+              <span>Post</span>
+              <span class="centerimg"
+                ><img src="./img/角色扮演极客_files/编辑 (1).png"
+              /></span>
+            </div>
+
+            <div class="list-context">
+              <div class="gd-item-context">
+                <a href="#">Shared Dice Bag Mechanic for my rules-lite RPG</a>
+                <a href="#">
+                  <p>RPGG Design-MarslsFlat</p>
+                  <p>
+                    <img src="./img/角色扮演极客_files/点赞.png" alt="" />
+                    <span>1</span>
+                    <img src="./img/角色扮演极客_files/评论 (1).png" alt="" />
+                    <span>3</span>
+                  </p>
+                </a>
+              </div>
+              <div class="gd-item-context">
+                <a href="#">A Plea for the Primacy of In-Person Gaming</a>
+                <a href="#">
+                  <p>General Role-Playing.pdzoch</p>
+                  <p>
+                    <img src="./img/角色扮演极客_files/点赞.png" alt="" />
+                    <span>9</span>
+                    <img src="./img/角色扮演极客_files/评论 (1).png" alt="" />
+                    <span>6</span>
+                  </p>
+                </a>
+              </div>
+              <div class="gd-item-context">
+                <a href="#"
+                  >QOTD SEP 14: What is the future of gaming? Live play, online?
+                  Hack and slash dominating, more story telling? Popularity up
+                  or down?
+                </a>
+                <a href="#">
+                  <p>General Role-Playing pdzoch</p>
+                  <p>
+                    <img src="./img/角色扮演极客_files/点赞.png" alt="" />
+                    <span>21</span>
+                    <img src="./img/角色扮演极客_files/评论 (1).png" alt="" />
+                    <span>38</span>
+                  </p>
+                </a>
+              </div>
+              <div class="gd-item-context">
+                <a href="#"
+                  >There's never been a Princess Bride RPG Play-by-Forum game on
+                  the site? Inconceivable!</a
+                >
+                <a href="#">
+                  <p>Play by Forum Alexander Beetle</p>
+                  <p>
+                    <img src="./img/角色扮演极客_files/点赞.png" alt="" />
+                    <span>27</span>
+                    <img src="./img/角色扮演极客_files/评论 (1).png" alt="" />
+                    <span>25</span>
+                  </p>
+                </a>
+              </div>
+              <div class="gd-item-context">
+                <a href="#"
+                  >QOTD SEP 6: Have you used real world locations in your games,
+                  not just cities, but building, streets, parks? Did you try to
+                  find real maps of those…</a
+                >
+                <a href="#">
+                  <p>General Role-Playing pdzoch</p>
+                  <p>
+                    <img src="./img/角色扮演极客_files/点赞.png" alt="" />
+                    <span>28</span>
+                    <img src="./img/角色扮演极客_files/评论 (1).png" alt="" />
+                    <span>32</span>
+                  </p>
+                </a>
+              </div>
+              <div class="gd-item-context">
+                <a href="#">Unplayable Games</a>
+                <a href="#">
+                  <p>General Role-Playing GeoffreyB</p>
+                  <p>
+                    <img src="./img/角色扮演极客_files/点赞.png" alt="" />
+                    <span>7</span>
+                    <img src="./img/角色扮演极客_files/评论 (1).png" alt="" />
+                    <span>12</span>
+                  </p>
+                </a>
+              </div>
+              <div class="gd-item-context">
+                <a href="#"
+                  >QOTD SEP 13: Have you ever had a monumental disaster happen
+                  in your game because the heroes failed to stop the villain's
+                  plans? How did the…</a
+                >
+                <a href="#">
+                  <p>General Role-Playing pdzoch</p>
+                  <p>
+                    <img src="./img/角色扮演极客_files/点赞.png" alt="" />
+                    <span>21</span>
+                    <img src="./img/角色扮演极客_files/评论 (1).png" alt="" />
+                    <span>19</span>
+                  </p>
+                </a>
+              </div>
+              <div class="gd-item-context">
+                <a href="#">Is there a "public domain" rpg ?</a>
+                <a href="#">
+                  <p>RPGGeek Suggestions rkcpek</p>
+                  <p>
+                    <img src="./img/角色扮演极客_files/点赞.png" alt="" />
+                    <span>7</span>
+                    <img src="./img/角色扮演极客_files/评论 (1).png" alt="" />
+                    <span>12</span>
+                  </p>
+                </a>
+              </div>
+              <div class="gd-item-context">
+                <a href="#"
+                  >QOTD SEP 9: What are the "rules" a star wars film should
+                  follow to be "star wars"? Are these the same rules for a "Star
+                  Wars" RPG or scenario?</a
+                >
+                <a href="#">
+                  <p>General Role-Playing pdzoch</p>
+                  <p>
+                    <img src="./img/角色扮演极客_files/点赞.png" alt="" />
+                    <span>27</span>
+                    <img src="./img/角色扮演极客_files/评论 (1).png" alt="" />
+                    <span>59</span>
+                  </p>
+                </a>
+              </div>
+
+              <div class="gd-item-context">
+                <a href="#"
+                  >The big QOTD Summary and Subscription Thread Volume 3</a
+                >
+                <a href="#">
+                  <p>RPGGeek Help and How-To pdzoch</p>
+                  <p>
+                    <img src="./img/角色扮演极客_files/点赞.png" alt="" />
+                    <span>43</span>
+                    <img src="./img/角色扮演极客_files/评论 (1).png" alt="" />
+                    <span>1770</span>
+                  </p>
+                </a>
+              </div>
+
+              <div class="gd-item-context">
+                <a href="#">An observation</a>
+                <a href="#">
+                  <p>General Role-Playing Whymme</p>
+                  <p>
+                    <img src="./img/角色扮演极客_files/点赞.png" alt="" />
+                    <span>11</span>
+                    <img src="./img/角色扮演极客_files/评论 (1).png" alt="" />
+                    <span>47</span>
+                  </p>
+                </a>
+              </div>
+              <div class="gd-item-context">
+                <a href="#"
+                  >QOTD AUG 26: How concerned are you about dice fairness? Do
+                  you feel the same about the results of a digital die roll as a
+                  physical die roll? What…
+                </a>
+                <a href="#">
+                  <p>General Role-Playing pdzoch</p>
+                  <p>
+                    <img src="./img/角色扮演极客_files/点赞.png" alt="" />
+                    <span>27</span>
+                    <img src="./img/角色扮演极客_files/评论 (1).png" alt="" />
+                    <span>43</span>
+                  </p>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="r0">
+            <div class="gd-item-title">
+              <div>Play By Forum</div>
+              <div>
+                Active
+                <span class="triangle1"></span>
+                <span>
+                  <img src="./img/角色扮演极客_files/left.png" />
+                  <span> 1 </span>
+                  <img src="./img/角色扮演极客_files/right.png" />
+                </span>
+              </div>
+            </div>
+
+            <div class="list-context">
+              <div class="gd-item-context">
+                <a href="#">Through the Valley of the Manticore (OSE)</a>
+                <a href="#">
+                  <p>bryce0lynch</p>
+                  <p>
+                    <img src="./img/角色扮演极客_files/点赞.png" alt="" />
+                    <span>7</span>
+                    <img src="./img/角色扮演极客_files/评论 (1).png" alt="" />
+                    <span>2</span>
+                  </p>
+                </a>
+              </div>
+              <div class="gd-item-context">
+                <a href="#"
+                  >The Fall of Silverpine Watch-Depressingly flat...</a
+                >
+                <a href="#">
+                  <p>bryce0lynch</p>
+                  <p>
+                    <img src="./img/角色扮演极客_files/点赞.png" alt="" />
+                    <span>7</span>
+                    <img src="./img/角色扮演极客_files/评论 (1).png" alt="" />
+                    <span>2</span>
+                  </p>
+                </a>
+              </div>
+              <div class="gd-item-context">
+                <a href="#">Terror in the Old Fell Forest-Enjoy reading it </a>
+                <a href="#">
+                  <p>bryce0lynch</p>
+                  <p>
+                    <img src="./img/角色扮演极客_files/点赞.png" alt="" />
+                    <span>12</span>
+                    <img src="./img/角色扮演极客_files/评论 (1).png" alt="" />
+                    <span>2</span>
+                  </p>
+                </a>
+              </div>
+              <div class="gd-item-context">
+                <a href="#">Spelljammer: Adventures in Space - Ring Side</a>
+                <a href="#">
+                  <p>Biotech66</p>
+                  <p>
+                    <img src="./img/角色扮演极客_files/点赞.png" alt="" />
+                    <span>9</span>
+                    <img src="./img/角色扮演极客_files/评论 (1).png" alt="" />
+                    <span>0</span>
+                  </p>
+                </a>
+              </div>
+              <div class="gd-item-context">
+                <a href="#">Call of the Toad-God for what it is</a>
+                <a href="#">
+                  <p>bryce0lynch</p>
+                  <p>
+                    <img src="./img/角色扮演极客_files/点赞.png" alt="" />
+                    <span>20</span>
+                    <img src="./img/角色扮演极客_files/评论 (1).png" alt="" />
+                    <span>3</span>
+                  </p>
+                </a>
+              </div>
+              <div class="gd-item-context">
+                <a href="#"
+                  >Dungeon Age Adventures: Imperial Vault 19-It's good</a
+                >
+                <a href="#">
+                  <p>bryce0lynch</p>
+                  <p>
+                    <img src="./img/角色扮演极客_files/点赞.png" alt="" />
+                    <span>18</span>
+                    <img src="./img/角色扮演极客_files/评论 (1).png" alt="" />
+                    <span>2</span>
+                  </p>
+                </a>
+              </div>
+              <div class="gd-item-context">
+                <a href="#">Under the City-Essenttially,a one page,repeated</a>
+                <a href="#">
+                  <p>bryce0lynch</p>
+                  <p>
+                    <img src="./img/角色扮演极客_files/点赞.png" alt="" />
+                    <span>8</span>
+                    <img src="./img/角色扮演极客_files/评论 (1).png" alt="" />
+                    <span>0</span>
+                  </p>
+                </a>
+              </div>
+              <div class="gd-item-context">
+                <a href="#"
+                  >Die Geschichte beim Schopfe packen: SL-Eingriffe und
+                  Sondereffekte-A collection of materials without a name ,but
+                  without value</a
+                >
+                <a href="#">
+                  <p>gatekeeper86</p>
+                  <p>
+                    <img src="./img/角色扮演极客_files/点赞.png" alt="" />
+                    <span>4</span>
+                    <img src="./img/角色扮演极客_files/评论 (1).png" alt="" />
+                    <span>1</span>
+                  </p>
+                </a>
+              </div>
+              <div class="gd-item-context">
+                <a href="#">Bounty 09: Fishing in Anthusis Fish Elsewhere</a>
+                <a href="#">
+                  <p>Dutys_Fist</p>
+                  <p>
+                    <img src="./img/角色扮演极客_files/点赞.png" alt="" />
+                    <span>8</span>
+                    <img src="./img/角色扮演极客_files/评论 (1).png" alt="" />
+                    <span>0</span>
+                  </p>
+                </a>
+              </div>
+
+              <div class="gd-item-context">
+                <a href="#"
+                  >The Halls of Cauldron Mountain -Same old same old</a
+                >
+                <a href="#">
+                  <p>bryce0lynch</p>
+                  <p>
+                    <img src="./img/角色扮演极客_files/点赞.png" alt="" />
+                    <span>14</span>
+                    <img src="./img/角色扮演极客_files/评论 (1).png" alt="" />
+                    <span>2</span>
+                  </p>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 右边部分 -->
+        <div class="rmain">
+          <div class="r0">
+            <div class="gd-item-title">
+              <div>Industry News</div>
+              <div>
+                Recent
+                <span class="triangle1"></span>
+                <span>
+                  <img src="./img/角色扮演极客_files/left.png" />
+                  <span> 1 </span>
+                  <img src="./img/角色扮演极客_files/right.png" />
+                </span>
+              </div>
+            </div>
+
+            <div class="gd-item-type">
+              <span>All</span>
+              <span class="triangle1"></span>
+            </div>
+
+            <div class="list-context">
+              <div class="gd-item-context">
+                <a href="#">These Two Weeks in Geek History September 4-17</a>
+                <a href="#">
+                  <p>RPGG News RPGG Newscaster Lou Crazy</p>
+                  <p>
+                    <img src="./img/角色扮演极客_files/点赞.png" alt="" />
+                    <span>10</span>
+                    <img src="./img/角色扮演极客_files/评论 (1).png" alt="" />
+                    <span>1</span>
+                  </p>
+                </a>
+              </div>
+              <div class="gd-item-context">
+                <a href="#">Happy Birthday Mallet!</a>
+                <a href="#">
+                  <p>RPGG News RPGG Newscaster Lou Crazy</p>
+                  <p>
+                    <img src="./img/角色扮演极客_files/点赞.png" alt="" />
+                    <span>21</span>
+                    <img src="./img/角色扮演极客_files/评论 (1).png" alt="" />
+                    <span>13</span>
+                  </p>
+                </a>
+              </div>
+              <div class="gd-item-context">
+                <a href="#">Bundle Watch September 13,2022 Dr. Who Troika </a>
+                <a href="#">
+                  <p>RPGG News RPGG Newscaster Patrick</p>
+                  <p>
+                    <img src="./img/角色扮演极客_files/点赞.png" alt="" />
+                    <span>19</span>
+                    <img src="./img/角色扮演极客_files/评论 (1).png" alt="" />
+                    <span>1</span>
+                  </p>
+                </a>
+              </div>
+              <div class="gd-item-context">
+                <a href="#"
+                  >What's New September 11,2022,DDEE,Small Press,Pathfinder</a
+                >
+                <a href="#">
+                  <p>RPGG News RPGG Newscaster Bruce</p>
+                  <p>
+                    <img src="./img/角色扮演极客_files/点赞.png" alt="" />
+                    <span>136</span>
+                    <img src="./img/角色扮演极客_files/评论 (1).png" alt="" />
+                    <span>10</span>
+                  </p>
+                </a>
+              </div>
+              <div class="gd-item-context">
+                <a href="#">The Thursday Thing #63, September 8th, 2022</a>
+                <a href="#">
+                  <p>RPGG News RPGG Newscaster Bi</p>
+                  <p>
+                    <img src="./img/角色扮演极客_files/点赞.png" alt="" />
+                    <span>25</span>
+                    <img src="./img/角色扮演极客_files/评论 (1).png" alt="" />
+                    <span>2</span>
+                  </p>
+                </a>
+              </div>
+              <div class="gd-item-context">
+                <a href="#">Bundle Watch -September 6 -Treasures and Heroes</a>
+                <a href="#">
+                  <p>RPGG News RPGG Newscaster Patrick</p>
+                  <p>
+                    <img src="./img/角色扮演极客_files/点赞.png" alt="" />
+                    <span>23</span>
+                    <img src="./img/角色扮演极客_files/评论 (1).png" alt="" />
+                    <span>1</span>
+                  </p>
+                </a>
+              </div>
+              <div class="gd-item-context">
+                <a href="#"
+                  >What's New September 3, 2022: Call of Cthulhu,small
+                  press,dd5e,ACKS,Mythic,Conan sword of tje serpentine ,Trinity
+                  continuum,and more!</a
+                >
+                <a href="#">
+                  <p>RPGG News RPGG Newscaster Bruce</p>
+                  <p>
+                    <img src="./img/角色扮演极客_files/点赞.png" alt="" />
+                    <span>40</span>
+                    <img src="./img/角色扮演极客_files/评论 (1).png" alt="" />
+                    <span>7</span>
+                  </p>
+                </a>
+              </div>
+              <div class="gd-item-context">
+                <a href="#">The Thursday Thing #62, September 1st, 2022</a>
+                <a href="#">
+                  <p>RPGG News RPGG Newscaster Bi</p>
+                  <p>
+                    <img src="./img/角色扮演极客_files/点赞.png" alt="" />
+                    <span>27</span>
+                    <img src="./img/角色扮演极客_files/评论 (1).png" alt="" />
+                    <span>1</span>
+                  </p>
+                </a>
+              </div>
+              <div class="gd-item-context">
+                <a href="#">Bundle Watch - August 30, 2022 - Catch up</a>
+                <a href="#">
+                  <p>RPGG News RPGG Newscaster Patrick</p>
+                  <p>
+                    <img src="./img/角色扮演极客_files/点赞.png" alt="" />
+                    <span>26</span>
+                    <img src="./img/角色扮演极客_files/评论 (1).png" alt="" />
+                    <span>1</span>
+                  </p>
+                </a>
+              </div>
+
+              <div class="gd-item-context">
+                <a href="#">Happy Birthday Cpiz!</a>
+                <a href="#">
+                  <p>RPGG News RPGG Newscaster Lou Crazy</p>
+                  <p>
+                    <img src="./img/角色扮演极客_files/点赞.png" alt="" />
+                    <span>18</span>
+                    <img src="./img/角色扮演极客_files/评论 (1).png" alt="" />
+                    <span>13</span>
+                  </p>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="r0">
+            <div class="gd-item-title">
+              <div>Images</div>
+              <div>
+                Recent
+                <span class="triangle1"></span>
+                <span>
+                  <img src="./img/角色扮演极客_files/left.png" />
+                  <span> 1 </span>
+                  <img src="./img/角色扮演极客_files/right.png" />
+                </span>
+              </div>
+            </div>
+            <!-- 右边图片部分 -->
+            <div class="right-img-port">
+              <div class="gd-item-type">
+                <span>Type:RPG gd-item</span>
+                <span class="triangle1"></span>
+                <span>Gallery:</span>
+                <span class="triangle1"></span>
+              </div>
+              <div>
+                <span>Browse</span>
+                <span
+                  ><img
+                    src="./img/角色扮演极客_files/share.png"
+                    style="width: 15px"
+                /></span>
+              </div>
+            </div>
+            <div class="container">
+              <img src="img\角色扮演极客_files\pic7066358.jpg" />
+              <img src="img\角色扮演极客_files\pic7066286.jpg" />
+              <img src="img\角色扮演极客_files\pic7066225.jpg" />
+              <img src="img\角色扮演极客_files\pic7066222.jpg" />
+              <img src="img\角色扮演极客_files\pic7066219.jpg" />
+              <img src="img\角色扮演极客_files\pic7066214.jpg" />
+              <img src="img\角色扮演极客_files\pic7066212.jpg" />
+              <img src="img\角色扮演极客_files\pic7065812.png" />
+              <img src="img\角色扮演极客_files\pic7065804.png" />
+            </div>
+          </div>
+
+          <div class="r0">
+            <div class="gd-item-title">
+              <div>Reviews</div>
+              <div>
+                Recent
+                <span class="triangle1"></span>
+                <span>
+                  <img src="./img/角色扮演极客_files/left.png" />
+                  <span> 1 </span>
+                  <img src="./img/角色扮演极客_files/right.png" />
+                </span>
+              </div>
+            </div>
+
+            <div class="list-context">
+              <div class="gd-item-context">
+                <a href="#">Through the Valley of the Manticore (OSE)</a>
+                <a href="#">
+                  <p>bryce0lynch</p>
+                  <p>
+                    <img src="./img/角色扮演极客_files/点赞.png" alt="" />
+                    <span>7</span>
+                    <img src="./img/角色扮演极客_files/评论 (1).png" alt="" />
+                    <span>2</span>
+                  </p>
+                </a>
+              </div>
+              <div class="gd-item-context">
+                <a href="#"
+                  >The Fall of Silverpine Watch-Depressingly flat...</a
+                >
+                <a href="#">
+                  <p>bryce0lynch</p>
+                  <p>
+                    <img src="./img/角色扮演极客_files/点赞.png" alt="" />
+                    <span>7</span>
+                    <img src="./img/角色扮演极客_files/评论 (1).png" alt="" />
+                    <span>2</span>
+                  </p>
+                </a>
+              </div>
+              <div class="gd-item-context">
+                <a href="#">Terror in the Old Fell Forest-Enjoy reading it </a>
+                <a href="#">
+                  <p>bryce0lynch</p>
+                  <p>
+                    <img src="./img/角色扮演极客_files/点赞.png" alt="" />
+                    <span>12</span>
+                    <img src="./img/角色扮演极客_files/评论 (1).png" alt="" />
+                    <span>2</span>
+                  </p>
+                </a>
+              </div>
+              <div class="gd-item-context">
+                <a href="#">Spelljammer: Adventures in Space - Ring Side</a>
+                <a href="#">
+                  <p>Biotech66</p>
+                  <p>
+                    <img src="./img/角色扮演极客_files/点赞.png" alt="" />
+                    <span>9</span>
+                    <img src="./img/角色扮演极客_files/评论 (1).png" alt="" />
+                    <span>0</span>
+                  </p>
+                </a>
+              </div>
+              <div class="gd-item-context">
+                <a href="#">Call of the Toad-God for what it is</a>
+                <a href="#">
+                  <p>bryce0lynch</p>
+                  <p>
+                    <img src="./img/角色扮演极客_files/点赞.png" alt="" />
+                    <span>20</span>
+                    <img src="./img/角色扮演极客_files/评论 (1).png" alt="" />
+                    <span>3</span>
+                  </p>
+                </a>
+              </div>
+              <div class="gd-item-context">
+                <a href="#"
+                  >Dungeon Age Adventures: Imperial Vault 19-It's good</a
+                >
+                <a href="#">
+                  <p>bryce0lynch</p>
+                  <p>
+                    <img src="./img/角色扮演极客_files/点赞.png" alt="" />
+                    <span>18</span>
+                    <img src="./img/角色扮演极客_files/评论 (1).png" alt="" />
+                    <span>2</span>
+                  </p>
+                </a>
+              </div>
+              <div class="gd-item-context">
+                <a href="#">Under the City-Essenttially,a one page,repeated</a>
+                <a href="#">
+                  <p>bryce0lynch</p>
+                  <p>
+                    <img src="./img/角色扮演极客_files/点赞.png" alt="" />
+                    <span>8</span>
+                    <img src="./img/角色扮演极客_files/评论 (1).png" alt="" />
+                    <span>0</span>
+                  </p>
+                </a>
+              </div>
+              <div class="gd-item-context">
+                <a href="#"
+                  >Die Geschichte beim Schopfe packen: SL-Eingriffe und
+                  Sondereffekte-A collection of materials without a name ,but
+                  without value</a
+                >
+                <a href="#">
+                  <p>gatekeeper86</p>
+                  <p>
+                    <img src="./img/角色扮演极客_files/点赞.png" alt="" />
+                    <span>4</span>
+                    <img src="./img/角色扮演极客_files/评论 (1).png" alt="" />
+                    <span>1</span>
+                  </p>
+                </a>
+              </div>
+              <div class="gd-item-context">
+                <a href="#">Bounty 09: Fishing in Anthusis Fish Elsewhere</a>
+                <a href="#">
+                  <p>Dutys_Fist</p>
+                  <p>
+                    <img src="./img/角色扮演极客_files/点赞.png" alt="" />
+                    <span>8</span>
+                    <img src="./img/角色扮演极客_files/评论 (1).png" alt="" />
+                    <span>0</span>
+                  </p>
+                </a>
+              </div>
+
+              <div class="gd-item-context">
+                <a href="#"
+                  >The Halls of Cauldron Mountain -Same old same old</a
+                >
+                <a href="#">
+                  <p>bryce0lynch</p>
+                  <p>
+                    <img src="./img/角色扮演极客_files/点赞.png" alt="" />
+                    <span>14</span>
+                    <img src="./img/角色扮演极客_files/评论 (1).png" alt="" />
+                    <span>2</span>
+                  </p>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- <div class="r1">
+
+            </div>
+            <div>
+              <a href="#"> </a>
+              <a href="#"></a>
+            </div>
+            <div>
+              <a href="#"
+                ></a
+              >
+              <a href="#"></a>
+            </div>
+            <div>
+              <a href="#"></a>
+              <a href="#"></a>
+            </div>
+            <div>
+              <a href="#"></a>
+              <a href="#"> </a>
+            </div>
+          </div> -->
+        </div>
+      </div>
+    </div>
+    <!-- 页面底部不部分 -->
+    <div class="footer">
+      <div>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Contact</a></li>
+          <li><a href="#">Privacy</a></li>
+          <li><a href="#">Terms</a></li>
+          <li><a href="#">Advertise</a></li>
+          <li><a href="#">Support BGG</a></li>
+        </ul>
+      </div>
+      <p></p>
+      <p style="text-align: center; font-size: small">
+        Geekdo, BoardGameGeek, the Geekdo logo, and the BoardGameGeek logo are
+        trademarks of BoardGameGeek, LLC.
+      </p>
+
+      <br /><br />
+    </div>
+  </body>
+</html>

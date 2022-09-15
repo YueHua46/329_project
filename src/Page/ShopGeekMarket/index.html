@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/main.css" />
+    <link
+      rel="stylesheet"
+      href="jquery/bootstrap_3.3.0/css/bootstrap.min.css"
+    />
+    <!-- <script text="javaScript" href="js/popper.min.js"></script> -->
+    <!-- <script text="javaScript" href="js/jquery-1.11.1-min.js"></script> -->
+
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script
+      text="javaScript"
+      href="jquery/bootstrap_3.3.0/js/bootstrap.bundle.min.js"
+    ></script>
+    <!-- <script type="javaScript" href="js/fff.js" ></script> -->
+  </head>
+  <body style="width: 100%; height: 100%">
+    <div>
+      <!---侧边栏-->
+      <div id="navigation" class="sidebar-collapse">
+        <ul class="nav nav-pills nav-stacked">
+          <li class="liClass">
+            <a href="" class="returnMenu">
+              <i style="color: white">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-house-fill"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="m8 3.293 6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293l6-6zm5-.793V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"
+                  />
+                  <path
+                    fill-rule="evenodd"
+                    d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z"
+                  />
+                </svg>
+              </i>
+              <span style="font-size: 20px">Return to BGG</span>
+            </a>
+          </li>
+          <li class="liClass">
+            <div>
+              <a href="">
+                <h1>
+                  <img
+                    class="logo"
+                    src="img/geekmarket-logo_1.svg"
+                    alt="Geek Market"
+                  />
+                </h1>
+              </a>
+            </div>
+            <!-- <div class="logo-element">
+                        GM
+                    </div> -->
+          </li>
+          <li class="liClass">
+            <a href="#no2" class="collapsed" data-toggle="collapse"
+              ><i></i> <span>Buying</span><span></span
+            ></a>
+            <ul id="no2" class="nav nav-pills nav-stacked collapse nav_ul">
+              <li class="LiClass"><a href="">Browse Listings</a></li>
+              <li class="LiClass"><a href="">Find My Wants</a></li>
+            </ul>
+          </li>
+
+          <li class="liClass">
+            <a href="#no3" class="collapsed" data-toggle="collapse"
+              ><i></i> <span>Selling</span><span></span
+            ></a>
+            <ul id="no3" class="nav nav-pills nav-stacked collapse nav_ul">
+              <li class="liClass"><a href="">Manage Listings</a></li>
+              <li class="liClass"><a href="">Price Comparator</a></li>
+              <li class="liClass"><a href="">Latest Sales</a></li>
+              <li class="liClass"><a href="">Sales Stats</a></li>
+              <li class="liClass"><a href="">Summary By Month</a></li>
+              <li class="liClass"><a href="">Ad Fees</a></li>
+            </ul>
+          </li>
+
+          <li class="liClass">
+            <a href="">
+              <!-- <i> <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 20 20" >
+                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
+                        </svg>
+                        </i> -->
+              <span class="nac label">Create New Listing</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <!--右-->
+      <div class="right-page">
+        <div class="header" style="align-items: center">
+          <!--缩放侧边栏按钮-->
+          <a href="">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="25"
+              height="25"
+              fill="currentColor"
+              class="bi bi-list"
+              viewBox="0 0 16 16"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"
+              />
+            </svg>
+          </a>
+
+          <!--搜索框-->
+          <div>
+            <form>
+              <input type="search" style="width: 400px; height: 25px" />
+            </form>
+          </div>
+
+          <div class="login">
+            <span><a href="">Sign In</a></span>
+            <span><a href="">Join</a></span>
+          </div>
+        </div>
+        <!--翻页-->
+        <div class="turn-page">
+          <div style="text-align: left; margin-left: 10px; height: 50%">
+            <h2 style="">Browse Listings</h2>
+          </div>
+          <div style="display: flex; margin-left: 10px">
+            <!---筛选按钮-->
+            <div class="btn-group m-l-none open">
+              <button
+                type="button"
+                id="AddFilter"
+                class="btn btn-sm btn-primary dropdown-toggle"
+                data-toggle="dropdown"
+              >
+                Add Filter
+                <span class=""></span>
+              </button>
+              <ul class="dropdown-menu" style="display: none">
+                <li class="ng-scope">
+                  <a ng-href="" class="ng-binding">Condition</a>
+                </li>
+                <li class="ng-scope">
+                  <a ng-href="" class="ng-binding">Currency</a>
+                </li>
+                <li class="ng-scope">
+                  <a ng-href="" class="ng-binding">Country of Origin</a>
+                </li>
+                <li class="ng-scope">
+                  <a ng-href="" class="ng-binding">Ship Location</a>
+                </li>
+              </ul>
+            </div>
+
+            &nbsp;
+            <!---排序方式按钮-->
+            <div class="btn-group m-l-none open">
+              <button
+                type="button"
+                id="Sort"
+                class="btn btn-sm btn-primary dropdown-toggle"
+                data-toggle="dropdown"
+              >
+                Sort:
+                <span class="">Recently Added</span>
+              </button>
+              <ul class="dropdown-menu" style="display: none">
+                <li class="ng-scope">
+                  <a ng-href="" class="ng-binding">Recently Added</a>
+                </li>
+                <li class="ng-scope">
+                  <a ng-href="" class="ng-binding">Title</a>
+                </li>
+                <li class="ng-scope">
+                  <a ng-href="" class="ng-binding">Price(lowest first)</a>
+                </li>
+                <li class="ng-scope">
+                  <a ng-href="" class="ng-binding">Price(highest first)</a>
+                </li>
+              </ul>
+            </div>
+            <div class="btn-group m-l-none ng-scope">
+              <button
+                type="button"
+                class="btn btn-sm btn-default"
+                style="width: 30px; height: 30px; margin-left: 10px"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  fill="currentColor"
+                  class="bi bi-grid-fill"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    d="M1 2.5A1.5 1.5 0 0 1 2.5 1h3A1.5 1.5 0 0 1 7 2.5v3A1.5 1.5 0 0 1 5.5 7h-3A1.5 1.5 0 0 1 1 5.5v-3zm8 0A1.5 1.5 0 0 1 10.5 1h3A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 5.5v-3zm-8 8A1.5 1.5 0 0 1 2.5 9h3A1.5 1.5 0 0 1 7 10.5v3A1.5 1.5 0 0 1 5.5 15h-3A1.5 1.5 0 0 1 1 13.5v-3zm8 0A1.5 1.5 0 0 1 10.5 9h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 13.5v-3z"
+                  />
+                </svg>
+              </button>
+              <button
+                type="button"
+                class="btn btn-sm btn-default"
+                style="width: 30px; height: 30px; margin-left: 2px"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  fill="currentColor"
+                  class="bi bi-list-ul"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm-3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"
+                  />
+                </svg>
+              </button>
+            </div>
+          </div>
+          <!-- <div id="demo_pag1"></div> -->
+        </div>
+        <div class="product-list">
+          <div class="product">
+            <div style="margin: 10px">
+              <img src="img/2.jpg" class="proImg" />
+            </div>
+            <div>
+              <h3><a href="">Empire of the Stars</a></h3>
+              <p class="proP">Empire of the Stars (English edition) 2021</p>
+              <div class="proDiv">
+                <h4><a href="">€100.00</a></h4>
+                <div class="proState">New</div>
+                <div style="text-align: center">
+                  <img src="img/flag/flag_belgium.png" alt="" /><a href=""
+                    >Razrule</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="product">
+            <div style="margin: 10px">
+              <img src="img/3.jpg" class="proImg" />
+            </div>
+            <div>
+              <h3><a href="">Heroes of Normandie: D-DAY Scenarios Pack</a></h3>
+              <p class="proP">
+                Heroes of Normandie: D-DAY Scenarios Pack (English/French first
+                edition)
+              </p>
+              <div class="proDiv">
+                <h4><a href="">$42.00</a></h4>
+                <div class="proState">New</div>
+                <div style="text-align: center">
+                  <img src="img/flag/flag_usa.png" alt="" /><a href=""
+                    >Razrule</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="product">
+            <div style="margin: 10px">
+              <img src="img/4.jpg" class="proImg" />
+            </div>
+            <div>
+              <h3><a href=""> Heroes of Normandie: D-DAY Scenarios Pack</a></h3>
+              <p class="proP">
+                Heroes of Normandie: D-DAY Scenarios Pack (English/French first
+                edition)
+              </p>
+              <div class="proDiv">
+                <h4><a href="">$65.00</a></h4>
+                <div class="proState">New</div>
+                <div style="text-align: center">
+                  <img src="img/flag/flag_belgium.png" alt="" /><a href=""
+                    >Razrule</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="product">
+            <div style="margin: 10px">
+              <img src="img/5.jpg" class="proImg" />
+            </div>
+            <div>
+              <h3><a href="">Get Bit! Collectors Edition</a></h3>
+              <p class="proP">
+                Get Bit! Collectors Edition (English edition) 2014
+              </p>
+              <div class="proDiv">
+                <h4><a href="">€120.00</a></h4>
+                <div class="proState">New</div>
+                <div style="text-align: center">
+                  <img src="img/flag/flag_belgium.png" alt="" /><a href=""
+                    >Razrule</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="product">
+            <div style="margin: 10px">
+              <img src="img/6.jpg" class="proImg" />
+            </div>
+            <div>
+              <h3><a href="">Ghost Stories: The Infernal Die</a></h3>
+              <p class="proP"></p>
+              <div class="proDiv">
+                <h4><a href="">€25.00</a></h4>
+                <div class="proState">New</div>
+                <div style="text-align: center">
+                  <img src="img/flag/flag_spain.png" alt="" /><a href=""
+                    >Razrule</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="product">
+            <div style="margin: 10px">
+              <img src="img/7.jpg" class="proImg" />
+            </div>
+            <div>
+              <h3><a href="">Western Desert</a></h3>
+              <p class="proP">Western Desert (GDW edition) 1982</p>
+              <div class="proDiv">
+                <h4><a href="">$45.00</a></h4>
+                <div class="proState">New</div>
+                <div style="text-align: center">
+                  <img src="img/flag/flag_belgium.png" alt="" /><a href=""
+                    >Razrule</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="product">
+            <div style="margin: 10px">
+              <img src="img/8.jpg" class="proImg" />
+            </div>
+            <div>
+              <h3>
+                <a href="">Champions of Midgard: Jalev the Adaptable Promo</a>
+              </h3>
+              <p class="proP">
+                Champions of Midgard: Jalev the Adaptable Promo (English
+                edition) 2016
+              </p>
+              <div class="proDiv">
+                <h4><a href="">$10.00</a></h4>
+                <div class="proState">New</div>
+                <div style="text-align: center">
+                  <img src="img/flag/flag_belgium.png" alt="" /><a href=""
+                    >Razrule</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="product">
+            <div style="margin: 10px">
+              <img src="img/9.jpg" class="proImg" />
+            </div>
+            <div>
+              <h3><a href="">Dia de los Muertos</a></h3>
+              <p class="proP">
+                Dia de los Muertos (English/Spanish deluxe edition) 2016
+              </p>
+              <div class="proDiv">
+                <h4><a href="">$9.00</a></h4>
+                <div class="proState">Very Good</div>
+                <div style="text-align: center">
+                  <img src="img/flag/flag_belgium.png" alt="" /><a href=""
+                    >Razrule</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="product">
+            <div style="margin: 10px">
+              <img src="img/10.jpg" class="proImg" />
+            </div>
+            <div>
+              <h3><a href="">Cul-De-Sac Conquest</a></h3>
+              <p class="proP">Cul-De-Sac Conquest (Retail edition) 2016</p>
+              <div class="proDiv">
+                <h4><a href="">€15.00</a></h4>
+                <div class="proState">New</div>
+                <div style="text-align: center">
+                  <img src="img/flag/flag_belgium.png" alt="" /><a href=""
+                    >Razrule</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="product">
+            <div style="margin: 10px">
+              <img src="img/11.jpg" class="proImg" />
+            </div>
+            <div>
+              <h3><a href="">Tiffin</a></h3>
+              <p class="proP"></p>
+              <div class="proDiv">
+                <h4><a href="">$18.00</a></h4>
+                <div class="proState">New</div>
+                <div style="text-align: center">
+                  <img src="img/flag/flag_belgium.png" alt="" /><a href=""
+                    >Razrule</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="product">
+            <div style="margin: 10px">
+              <img src="img/12.jpg" class="proImg" />
+            </div>
+            <div>
+              <h3><a href="">Are You Dumber Than a Box of Rocks?</a></h3>
+              <p class="proP">Box of Rocks (English first edition) 2016</p>
+              <div class="proDiv">
+                <h4><a href="">$18.00</a></h4>
+                <div class="proState">New</div>
+                <div style="text-align: center">
+                  <img src="img/flag/flag_belgium.png" alt="" /><a href=""
+                    >Razrule</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="product">
+            <div style="margin: 10px">
+              <img src="img/13.jpg" class="proImg" />
+            </div>
+            <div>
+              <h3>
+                <a href=""
+                  >Arena of Death: Heroic Combat in the Fantasy World of</a
+                >
+              </h3>
+              <p class="proP">DragonQuest</p>
+              <div class="proDiv">
+                <h4><a href="">$18.00</a></h4>
+                <div class="proState">New</div>
+                <div style="text-align: center">
+                  <img src="img/flag/flag_belgium.png" alt="" /><a href=""
+                    >Razrule</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="product">
+            <div style="margin: 10px">
+              <img src="img/15.jpg" class="proImg" />
+            </div>
+            <div>
+              <h3><a href="">Behind the Throne</a></h3>
+              <p class="proP">Behind the Throne (English edition) 2016</p>
+              <div class="proDiv">
+                <h4><a href="">$15.00</a></h4>
+                <div class="proState">New</div>
+                <div style="text-align: center">
+                  <img src="img/flag/flag_belgium.png" alt="" /><a href=""
+                    >Razrule</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="product">
+            <div style="margin: 10px">
+              <img src="img/16.jpg" class="proImg" />
+            </div>
+            <div>
+              <h3><a href="">Bastille: Queenie 1</a></h3>
+              <p class="proP"></p>
+              <div class="proDiv">
+                <h4><a href="">€10.00</a></h4>
+                <div class="proState">New</div>
+                <div style="text-align: center">
+                  <img src="img/flag/flag_belgium.png" alt="" /><a href=""
+                    >Razrule</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="product">
+            <div style="margin: 10px">
+              <img src="img/17.jpg" class="proImg" />
+            </div>
+            <div>
+              <h3><a href="">Paradise Lost</a></h3>
+              <p class="proP"></p>
+              <div class="proDiv">
+                <h4><a href="">$100.00</a></h4>
+                <div class="proState">New</div>
+                <div style="text-align: center">
+                  <img src="img/flag/flag_belgium.png" alt="" /><a href=""
+                    >Razrule</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="product">
+            <div style="margin: 10px">
+              <img src="img/18.jpg" class="proImg" />
+            </div>
+            <div>
+              <h3><a href="">Assault of the Giants</a></h3>
+              <p class="proP">
+                Assault of the Giants (English premium edition) 2017
+              </p>
+              <div class="proDiv">
+                <h4><a href="">€70.00</a></h4>
+                <div class="proState">New</div>
+                <div style="text-align: center">
+                  <img src="img/flag/flag_belgium.png" alt="" /><a href=""
+                    >Razrule</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="product">
+            <div style="margin: 10px">
+              <img src="img/19.jpg" class="proImg" />
+            </div>
+            <div>
+              <h3><a href="">Ashes Reborn: The Roaring Rose</a></h3>
+              <p class="proP">Ashes: The Roaring Rose (English edition) 2016</p>
+              <div class="proDiv">
+                <h4><a href="">€10.00</a></h4>
+                <div class="proState">Like New</div>
+                <div style="text-align: center">
+                  <img src="img/flag/flag_belgium.png" alt="" /><a href=""
+                    >Razrule</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="product">
+            <div style="margin: 10px">
+              <img src="img/20.jpg" class="proImg" />
+            </div>
+            <div>
+              <h3><a href="">Ashes Reborn: The Duchess of Deception</a></h3>
+              <p class="proP">
+                Ashes: The Duchess of Deception (English edition) 2016
+              </p>
+              <div class="proDiv">
+                <h4><a href="">$9.00</a></h4>
+                <div class="proState">New</div>
+                <div style="text-align: center">
+                  <img src="img/flag/flag_belgium.png" alt="" /><a href=""
+                    >Razrule</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // var addBt=document.getElementById("AddFilter");
+      // addBt.onclick=function(){
+      //     alert(234)
+      // }
+      $(function () {
+        $('#AddFilter,#Sort').bind('click', function () {
+          // alert(324)
+          var res = $(this).next().css('display')
+          if (res == 'none') $(this).next().show()
+          else $(this).next().hide()
+          // console.log($(this).next()[0])
+        })
+      })
+    </script>
+  </body>
+</html>

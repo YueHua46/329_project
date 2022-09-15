@@ -1,0 +1,192 @@
+.container {
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif,
+    'Apple Color Emoji', 'Segoe UI Emoji', Segoe UI Symbol, 'Noto Color Emoji';
+  header {
+    display: flex;
+    justify-content: space-between;
+    height: 70px;
+    background-color: #3f3a60;
+    padding: 10px;
+    font-weight: bold;
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      .header-menu {
+        display: flex;
+        margin-left: 10px;
+      }
+      .header-list {
+        display: flex;
+        gap: 20px;
+        margin-left: 20px;
+      }
+    }
+    .header-right {
+      display: flex;
+      align-items: center;
+      ul {
+        display: flex;
+        gap: 20px;
+        align-items: center;
+        .header-search {
+          display: flex;
+          height: 28px;
+          svg {
+            position: absolute;
+            color: #9ca2a8;
+            margin-top: 2px;
+            margin-left: 2px;
+          }
+          input {
+            border-radius: 5px;
+            border: none;
+            padding-left: 28px;
+          }
+        }
+      }
+    }
+  }
+  main {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px 20px 20px 20px;
+    background-color: #ecedee;
+    & > div {
+      border-radius: 4px;
+      box-shadow: #b2b2b2 0px 0px 5px;
+    }
+    .main-Card1 {
+      display: flex;
+      flex-direction: column;
+      padding: 5px 20px;
+      background-color: #ffffff;
+      .title {
+        display: flex;
+        flex-direction: column;
+        hr {
+          outline: none;
+          border: 0.5px solid #e1e3e5;
+          background-color: #e1e3e5;
+        }
+        section {
+          display: flex;
+          h3 {
+            padding: 15px;
+            position: relative;
+          }
+          h3:hover {
+            color: #005bca;
+            cursor: pointer;
+          }
+        }
+      }
+      .main-card-banner {
+        display: flex;
+        padding: 20px 0;
+        gap: 20px;
+        .main-card-img {
+          img {
+            width: 622px;
+
+            border-radius: 5px;
+          }
+          .small {
+            h3 {
+              font-size: 18px;
+            }
+            small {
+              color: #585f65;
+              font-size: 12px;
+            }
+          }
+        }
+        .main-card-list {
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+          .main-card-item {
+            display: flex;
+            gap: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e1e3e5;
+          }
+          .main-card-item:last-of-type {
+            border-bottom: none;
+          }
+        }
+      }
+    }
+    .main-Card4 {
+      display: flex;
+      & > div {
+        width: 50%;
+      }
+    }
+  }
+  footer {
+    display: flex;
+    flex-direction: column;
+    background-color: #3f3a60;
+    color: white;
+    padding: 40px 20px;
+    .row1 {
+      display: flex;
+      justify-content: space-between;
+      section {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        & > svg {
+        }
+        h2 {
+          opacity: 0.75;
+          font-size: 14px;
+        }
+        ul {
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+          li {
+            font-size: 14px;
+            display: flex;
+            gap: 10px;
+            cursor: pointer;
+          }
+        }
+      }
+      .col1 {
+        svg {
+          width: 150px;
+          height: 77px;
+        }
+      }
+      .col4 {
+        .icon {
+        }
+        .appstore {
+          width: 120px;
+          height: 38px;
+          img {
+            width: 100%;
+            height: 100%;
+          }
+        }
+      }
+    }
+  }
+  .row2 {
+    background-color: black;
+    color: white;
+    padding: 15px;
+    font-size: 12px;
+    display: flex;
+    justify-content: flex-end;
+    section {
+      opacity: 0.75;
+    }
+  }
+}

@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>tbs</title>
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+      integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu"
+      crossorigin="anonymous"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      li {
+        list-style: none;
+        display: inline-block;
+        margin-left: 0px;
+        font-size: 6px;
+      }
+      ul li a {
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: none;
+      }
+      img {
+        display: inline-block;
+        width: 70px;
+        height: 80px;
+        padding-left: 1px;
+      }
+      .boxRight {
+        padding-top: 20px;
+      }
+      .item {
+        display: flex;
+        gap: 15px;
+      }
+      hr {
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+
+      /* header css */
+      header {
+        display: flex;
+        justify-content: space-between;
+        height: 70px;
+        background-color: #3f3a60;
+        padding: 10px;
+        font-weight: bold;
+      }
+      header .header-left {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+      }
+      header .header-left .header-menu {
+        display: flex;
+        margin-left: 10px;
+      }
+      header .header-left .header-list {
+        display: flex;
+        gap: 20px;
+        margin-left: 20px;
+      }
+      header .header-left .header-list a {
+        color: white !important;
+      }
+      header .header-left .header-list a:hover {
+        opacity: 0.75;
+      }
+      header .header-right {
+        display: flex;
+        align-items: center;
+      }
+      header .header-right ul {
+        display: flex;
+        gap: 20px;
+        align-items: center;
+      }
+      header .header-right ul li a {
+        color: white !important;
+      }
+      header .header-right ul li a:hover {
+        opacity: 0.75;
+      }
+      header .header-right ul .header-search {
+        display: flex;
+        height: 28px;
+        align-items: center;
+      }
+      header .header-right ul .header-search span {
+        font-size: 16px;
+        display: flex;
+        align-items: center;
+        left: 20px;
+        color: #9ca2a8 !important;
+      }
+      header .header-right ul .header-search input {
+        border-radius: 5px;
+        border: none;
+        padding-left: 28px;
+        height: 25px;
+      }
+
+      /* 侧边栏css */
+      .gd {
+        height: 100%;
+      }
+
+      .triangle {
+        width: 0;
+        height: 0;
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+        border-bottom: 10px solid skyblue;
+      }
+
+      .gd {
+        width: 160px;
+        border: 0.5px solid rgb(139, 139, 139);
+        border-radius: 5px;
+      }
+      .gd-list {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        background-color: #fff;
+      }
+      .gd-item {
+        display: flex;
+        justify-content: center;
+        gap: 5px;
+        margin-bottom: 5px;
+        padding-bottom: 5px;
+        border-bottom: 1px solid #e2e2e5;
+      }
+
+      .gd-item > img {
+        width: 30px;
+        height: 30px;
+      }
+      .gd-item > p {
+      }
+      .gd-item > p > span:first-of-type {
+        color: #000;
+        font-weight: bold;
+        font-size: 12px;
+        line-height: 1.1;
+        width: 80px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+      }
+      .gd-item > p > span:last-of-type {
+        color: #585f65;
+        line-height: 1.3;
+        font-size: 11px;
+      }
+      .gd-title {
+      }
+      .gd-title > .title {
+        display: block;
+        border-radius: 4px 4px 0 0;
+        background-color: #3f3a60;
+        padding: 7px;
+        margin-bottom: 0;
+        font-size: 11px;
+        text-transform: uppercase;
+        font-weight: 600;
+        color: #fff;
+        line-height: 1;
+        transition: all 0.2s ease-in-out;
+      }
+      .gd-title > div:last-of-type {
+        font-size: 11px;
+        margin-top: 5px;
+        margin-left: 5px;
+      }
+      .tbs-main {
+        display: flex;
+        padding: 20px;
+        border-radius: 5px;
+        gap: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="header-left">
+        <div class="header-menu">
+          <span class="glyphicon glyphicon-list" style="color: white"> </span>
+        </div>
+        <div class="header-logo">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="80"
+            height="38"
+            viewBox="0 0 80 38"
+          >
+            <g fill="none" fillRule="evenodd">
+              <path
+                fill="#FFF"
+                d="M41.6414127,20.8453307 C41.6414127,20.7138507 41.5623149,20.5562773 41.377073,20.5562773 L37.2504649,20.5562773 L37.2504649,24.470024 L41.377073,24.470024 C41.5623149,24.470024 41.6414127,24.338544 41.6414127,24.2073173 L41.6414127,20.8453307 Z M41.6414127,13.911344 C41.6414127,13.779864 41.5623149,13.622544 41.377073,13.622544 L37.2504649,13.622544 L37.2504649,17.2996773 L41.377073,17.2996773 C41.5623149,17.2996773 41.6414127,17.1681973 41.6414127,17.0103707 L41.6414127,13.911344 Z M32.6737649,27.8317573 L32.6737649,10.1032373 L43.6783083,10.1032373 C45.1334524,10.1032373 46.0591517,11.0223307 46.0591517,12.3353573 L46.0591517,16.2754507 C46.0591517,17.483344 45.2656223,18.6390507 43.6257465,19.0332373 C45.2656223,19.4269173 46.1915767,20.530184 46.1915767,21.7122373 L46.1915767,25.5730373 C46.1915767,26.9648507 45.2656223,27.8317573 43.8107333,27.8317573 L32.6737649,27.8317573 Z M57.7535044,16.9530667 L62.7609046,16.9530667 L62.7609046,25.8040267 C62.7609046,26.9597333 61.8619965,27.8263867 60.7242641,27.8263867 L51.7828972,27.8263867 C50.64542,27.8263867 49.7194656,26.9597333 49.7194656,25.8040267 L49.7194656,12.09388 C49.7194656,11.01696 50.64542,10.0978667 51.7828972,10.0978667 L62.7609046,10.0978667 L62.7609046,13.9062267 L54.5602501,13.9062267 C54.4280803,13.9062267 54.2959104,14.0374533 54.2959104,14.19528 L54.2959104,23.7031333 C54.2959104,23.8604533 54.4280803,23.9655867 54.5602501,23.9655867 L58.2640678,23.9655867 C58.4490546,23.9655867 58.5549435,23.8604533 58.5549435,23.7031333 L58.5549435,20.7087333 L56.1478193,20.7087333 L57.7535044,16.9530667 Z M74.3228322,16.9530667 L79.3304876,16.9530667 L79.3304876,25.8040267 C79.3304876,26.9597333 78.4313244,27.8263867 77.2938472,27.8263867 L68.3524802,27.8263867 C67.2147479,27.8263867 66.2890486,26.9597333 66.2890486,25.8040267 L66.2890486,12.09388 C66.2890486,11.01696 67.2147479,10.0978667 68.3524802,10.0978667 L79.3304876,10.0978667 L79.3304876,13.9062267 L71.1298332,13.9062267 C70.9976633,13.9062267 70.8652383,14.0374533 70.8652383,14.19528 L70.8652383,23.7031333 C70.8652383,23.8604533 70.9976633,23.9655867 71.1298332,23.9655867 L74.8333957,23.9655867 C75.0186376,23.9655867 75.1245266,23.8604533 75.1245266,23.7031333 L75.1245266,20.7087333 L72.7171472,20.7087333 L74.3228322,16.9530667 Z"
+              />
+              <polygon
+                fill="#FF5100"
+                points="24.87 7.01 21.107 8.035 24.792 0 .9 8.794 2.206 19.327 0 21.454 6.577 37.93 20.558 32.779 25.418 21.37 23.331 19.358"
+              />
+            </g>
+          </svg>
+        </div>
+        <ul class="header-list">
+          <li>
+            <a href="#">Browser</a>
+          </li>
+          <li>
+            <a href="#">Forums</a>
+          </li>
+          <li>
+            <a href="src/Page/GeeklistHot/tbsdemo.html">GeekLists</a>
+          </li>
+          <li>
+            <a href="../../Page/ShopGeekMarket/index.html">Shopping</a>
+          </li>
+          <li>
+            <a href="#">Community</a>
+          </li>
+          <li>
+            <a href="#">Help</a>
+          </li>
+        </ul>
+      </div>
+      <div class="header-right">
+        <ul>
+          <li>
+            <a href="#">Sign In</a>
+          </li>
+          <li>
+            <a href="#">Join!</a>
+          </li>
+          <li class="header-search">
+            <span class="glyphicon glyphicon-search" style="color: #333"></span>
+            <input placeholder="Search" type="text" />
+          </li>
+        </ul>
+      </div>
+    </header>
+    <div class="tbs-main">
+      <aside>
+        <div class="gd">
+          <div class="gd-list">
+            <div class="gd-title">
+              <div class="title">THE HOTNESS</div>
+              <div>
+                <span>GAME</span>
+              </div>
+            </div>
+            <div class="gd-item">
+              <img src="pic6513546.jpg" />
+              <p>
+                <span>Twilight:2000(4th Edition)</span>
+                <span>2021</span>
+              </p>
+              <span class="triangle"></span>
+            </div>
+            <div class="gd-item">
+              <img src="pic4412609.jpg" />
+              <p>
+                <span>Android:Shadow of the...</span>
+                <span>2018</span>
+              </p>
+              <span class="triangle"></span>
+            </div>
+            <div class="gd-item">
+              <img src="pic503490.jpg" />
+              <p>
+                <span>AI-Qadimland of Fate</span>
+                <span>1992</span>
+              </p>
+              <span class="triangle"></span>
+            </div>
+            <div class="gd-item">
+              <img src="pic2073834.jpg" />
+              <p>
+                <span>Dungeon Dragons Starter Set</span>
+                <span>2014</span>
+              </p>
+              <span class="triangle"></span>
+            </div>
+            <div class="gd-item">
+              <img src="pic5625807.png" />
+              <p>
+                <span>Alice is Missing</span>
+                <span>2020</span>
+              </p>
+              <span class="triangle"></span>
+            </div>
+            <div class="gd-item">
+              <img src="pic7026576.jpg" />
+              <p>
+                <span>Dragonlance:Shadow of the...</span>
+                <span>2022</span>
+              </p>
+              <span class="triangle"></span>
+            </div>
+            <div class="gd-item">
+              <img src="pic613939.jpg" />
+              <p>
+                <span>Call of Cthulhu(6th Edition)</span>
+                <span>2004</span>
+              </p>
+              <span class="triangle"></span>
+            </div>
+            <div class="gd-item">
+              <img src="pic4632921.png" />
+              <p>
+                <span>Shadow of the Demon Lord Core...</span>
+                <span>2015</span>
+              </p>
+              <span class="triangle"></span>
+            </div>
+            <div class="gd-item">
+              <img src="pic7061731.jpg" />
+              <p>
+                <span>Terror in the Old Fell Forest</span>
+                <span>2022</span>
+              </p>
+              <span class="triangle"></span>
+            </div>
+            <div class="gd-item">
+              <img src="pic508035.jpg" />
+              <p>
+                <span>Shadows Over Bogenhafen</span>
+                <span>1987</span>
+              </p>
+              <span class="triangle"></span>
+            </div>
+            <div class="gd-item">
+              <img src="pic502015.jpg" />
+              <p>
+                <span>Mouse Guard Roleplaying Game</span>
+                <span>2008</span>
+              </p>
+              <span class="triangle"></span>
+            </div>
+            <div class="gd-item">
+              <img src="pic2455572.jpg" />
+              <p>
+                <span>Dogs in the Vineyard</span>
+                <span>2004</span>
+              </p>
+              <span class="triangle"></span>
+            </div>
+            <div class="gd-item">
+              <img src="pic498668.jpg" />
+              <p>
+                <span>Ex Machina</span>
+                <span>2004</span>
+              </p>
+              <span class="triangle"></span>
+            </div>
+            <div class="gd-item">
+              <img src="pic512512.jpg" />
+              <p>
+                <span>Dread</span>
+                <span>2004</span>
+              </p>
+              <span class="triangle"></span>
+            </div>
+            <div class="gd-item">
+              <img src="pic515844.jpg" />
+              <p>
+                <span>The Star Wars Sourcebook</span>
+                <span>1987</span>
+              </p>
+              <span class="triangle"></span>
+            </div>
+          </div>
+        </div>
+      </aside>
+      <div style="width: 90%; margin: 0 auto">
+        <h2 style="padding-top: 19px; padding-left: 0px; padding-bottom: 1px">
+          GeekLists
+        </h2>
+        <hr style="margin-bottom: 10px" />
+        <select style="width: 100px; height: 30px" name="text">
+          <option value="">Hot-2 Days</option>
+          <option value="">appod</option>
+          <option value="">fuckyou</option>
+        </select>
+        <select style="width: 100px; height: 30px" name="text">
+          <option value="">Category</option>
+          <option value="">phontpro</option>
+          <option value="">tomato</option>
+        </select>
+        <input
+          style="
+            width: 140px;
+            height: 30px;
+            background-color: #005bca;
+            color: white;
+            margin-left: 5px;
+          "
+          type="submit"
+          value="+Create GeekLists"
+        /><br />
+
+        <div class="item" style="margin-top: 10px">
+          <div><img src="1.jpg" /><img src="2.jpg" /><img src="3.jpg" /></div>
+          <div class="boxRight">
+            <span
+              >My Top 50 after 10 years of RPGs, Board- and Video Games
+            </span>
+            <ul>
+              <li>lapxle</li>
+              <li>44</li>
+              <li>Sep9</li>
+            </ul>
+          </div>
+        </div>
+        <hr />
+        <div class="item">
+          <div>
+            <img style="width: 106px; height: 80px" src="4.jpg" /><img
+              style="width: 106px; height: 80px"
+              src="5.jpg"
+            />
+          </div>
+          <div class="boxRight">
+            <span
+              >My Top 50 after 10 years of RPGs, Board- and Video Games
+            </span>
+            <ul>
+              <li>lapxle</li>
+              <li>44</li>
+              <li>Sep9</li>
+            </ul>
+          </div>
+        </div>
+        <hr />
+        <div class="item">
+          <div><img src="6.jpg" /><img src="7.png" /><img src="18.jpg" /></div>
+          <div class="boxRight">
+            <span
+              >12 September 2022: How did your RPG session(s) go this week?
+            </span>
+            <ul>
+              <li>MonsterMike</li>
+              <li>7</li>
+              <li>Sep 12</li>
+            </ul>
+          </div>
+        </div>
+        <hr />
+        <div class="item">
+          <div
+            style="background-color: #545454; width: 213px; height: 80px"
+          ></div>
+          <div class="boxRight">
+            <span>GCL Mafia 607: Misinformation </span>
+            <ul>
+              <li>Dolus</li>
+              <li>3</li>
+              <li>Sep 12</li>
+            </ul>
+          </div>
+        </div>
+        <hr />
+        <div class="item">
+          <div><img src="8.jpg" /><img src="9.jpg" /><img src="10.jpg" /></div>
+          <div class="boxRight">
+            <span
+              >GCL Phoenix 610: Phoenix and Ph-orget It (Sept. 11, 2022)
+            </span>
+            <ul>
+              <li>indigopotter</li>
+              <li>9</li>
+              <li>Sep 12</li>
+            </ul>
+          </div>
+        </div>
+        <hr />
+        <div class="item">
+          <div>
+            <img style="width: 106px; height: 80px" src="11.jpg" /><img
+              style="width: 106px; height: 80px"
+              src="12.jpg"
+            />
+          </div>
+          <div class="boxRight">
+            <span>PAX Unplugged 2022 Virtual Game Market </span>
+            <ul>
+              <li>gundabad</li>
+              <li>1</li>
+              <li>Yesterday</li>
+            </ul>
+          </div>
+        </div>
+        <hr />
+        <div class="item">
+          <div>
+            <img src="13.jpg" /><img src="14.jpg" /><img src="15.png" />
+          </div>
+          <div class="boxRight">
+            <span>PAX Unplugged 2022 - Board Game Scheduling </span>
+            <ul>
+              <li>paxtt</li>
+              <li>1</li>
+              <li>Sep 12</li>
+            </ul>
+          </div>
+        </div>
+        <hr />
+        <div class="item">
+          <div>
+            <img src="16.jpg" /><img src="17.jpg" /><img src="18.jpg" />
+          </div>
+          <div class="boxRight">
+            <span>Those Questing for 1000 Microbadges in a Single Day! </span>
+            <ul>
+              <li>edbolme</li>
+              <li>15</li>
+              <li>Sep9</li>
+            </ul>
+          </div>
+        </div>
+        <hr />
+        <div class="item">
+          <div>
+            <img src="19.jpg" /><img src="33.jpg" /><img src="21.jpg" />
+          </div>
+          <div class="boxRight">
+            <span
+              >Microbadge Congratulations - May 2022 through August 2022
+            </span>
+            <ul>
+              <li>wildthayne</li>
+              <li>16</li>
+              <li>Sep 5</li>
+            </ul>
+          </div>
+        </div>
+        <hr />
+        <div class="item">
+          <div>
+            <img src="22.jpg" /><img src="23.jpg" /><img src="24.jpg" />
+          </div>
+          <div class="boxRight">
+            <span>Solo RPGs on Your Table - September 2022 </span>
+            <ul>
+              <li>cmmayo</li>
+              <li>37</li>
+              <li></li>
+              <li>Aug 31</li>
+            </ul>
+          </div>
+        </div>
+        <hr />
+        <div class="item">
+          <div>
+            <img src="25.jpg" /><img src="26.jpg" /><img src="27.jpg" />
+          </div>
+          <div class="boxRight">
+            <span>Solitaire Games on Your Table - September 2022 </span>
+            <ul>
+              <li>DoxaLogos</li>
+              <li>144</li>
+              <li>Aug 31</li>
+            </ul>
+          </div>
+        </div>
+        <hr />
+        <div class="item">
+          <div>
+            <img src="28.jpg" /><img src="29.jpg" /><img src="30.jpg" />
+          </div>
+          <div class="boxRight">
+            <span>Solo RPGs on Your Table - September 2022 </span>
+            <ul>
+              <li>lapxle</li>
+              <li>37</li>
+              <li>Aug 31</li>
+            </ul>
+          </div>
+        </div>
+        <hr />
+        <div class="item">
+          <div>
+            <img src="31.jpg" /><img src="32.jpg" /><img src="33.jpg" />
+          </div>
+          <div class="boxRight">
+            <span>SHUX 2022 International No-Ship Math Trade </span>
+            <ul>
+              <li>Juxtatype</li>
+              <li>8</li>
+              <li>Aug 30</li>
+            </ul>
+          </div>
+        </div>
+        <hr />
+        <div class="item">
+          <div><img src="9.jpg" /><img src="35.jpg" /><img src="36.jpg" /></div>
+          <div class="boxRight">
+            <span>Essen SPIEL 2022 no shipping LEFTOVERS math trade </span>
+            <ul>
+              <li>cuazzel</li>
+              <li>19</li>
+              <li>Aug 17</li>
+            </ul>
+          </div>
+        </div>
+        <hr />
+        <div class="item">
+          <div>
+            <img src="37.jpg" /><img src="38.jpg" /><img src="39.jpg" />
+          </div>
+          <div class="boxRight">
+            <span>Thematic Solitaire Playing Card Games </span>
+            <ul>
+              <li>Desmontes</li>
+              <li>190</li>
+              <li>Jan 3, 2016</li>
+            </ul>
+          </div>
+        </div>
+        <hr />
+        <div class="item">
+          <div>
+            <img src="43.jpg" /><img src="41.jpg" /><img src="42.jpg" />
+          </div>
+          <div class="boxRight">
+            <span>Worst RPGs Ever </span>
+            <ul>
+              <li>ctimmins</li>
+              <li>53</li>
+              <li>Dec 9, 2015</li>
+            </ul>
+          </div>
+        </div>
+        <hr />
+        <div class="item">
+          <div>
+            <img src="40.png" /><img src="44.jpg" /><img src="45.png" />
+          </div>
+          <div class="boxRight">
+            <span
+              >The Badger's Workshop, rethemes, reskins and orginal game designs
+              by Dennis Bennett
+            </span>
+            <ul>
+              <li>dennisthebadger</li>
+              <li>98</li>
+              <li>Feb 25, 2015</li>
+            </ul>
+          </div>
+        </div>
+        <hr />
+        <div class="item">
+          <div>
+            <img src="20.jpg" /><img src="20.jpg" /><img src="20.jpg" />
+          </div>
+          <div class="boxRight">
+            <span>My boardgame journey thus far </span>
+            <ul>
+              <li>davekuhns</li>
+              <li>61</li>
+              <li>Sep 30, 2014</li>
+            </ul>
+          </div>
+        </div>
+        <hr />
+        <div class="item">
+          <div><img src="4.jpg" /><img src="3.jpg" /><img src="16.jpg" /></div>
+          <div class="boxRight">
+            <span>Controversial or Fraudulent Kickstarters. </span>
+            <ul>
+              <li>attilathejund</li>
+              <li>1095</li>
+              <li>Jul 31, 2013</li>
+            </ul>
+          </div>
+        </div>
+        <hr />
+      </div>
+    </div>
+    <footer style="text-align: center; margin-top: 45px">
+      Home&nbsp;&nbsp;&nbsp;&nbsp; About&nbsp;&nbsp;&nbsp;&nbsp;
+      Contact&nbsp;&nbsp; &nbsp;&nbsp;Privacy
+      &nbsp;&nbsp;&nbsp;&nbsp;Terms&nbsp;&nbsp;
+      &nbsp;&nbsp;Advertise&nbsp;&nbsp;&nbsp;&nbsp; Support
+      &nbsp;&nbsp;&nbsp;&nbsp;BGG<br />
+      <p style="margin-top: 15px; font-size: 8px">
+        <span
+          >Geekdo, BoardGameGeek, the Geekdo logo, and the BoardGameGeek logo
+          are trademarks of BoardGameGeek, LLC.</span
+        >
+      </p>
+    </footer>
+  </body>
+</html>

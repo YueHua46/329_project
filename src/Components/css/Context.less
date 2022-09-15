@@ -1,0 +1,47 @@
+.Container {
+  padding: 20px;
+  background-color: white;
+  border-radius: 5px;
+
+  & > h3 {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+  }
+  & > ul {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    li {
+      display: flex;
+      gap: 10px;
+      border-bottom: 1px solid #d1d4d7;
+      padding-bottom: 10px;
+      img {
+        width: 80px;
+        height: 80px;
+        border-radius: 5px;
+      }
+      & > div {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        p {
+          color: black;
+          font-weight: bold;
+          font-size: 14px;
+        }
+        small {
+          font-size: 14px;
+          display: flex;
+          gap: 5px;
+          span {
+            color: rgb(86, 86, 86);
+            display: flex;
+            align-items: center;
+            gap: 2px;
+          }
+        }
+      }
+    }
+  }
+}

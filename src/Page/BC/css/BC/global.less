@@ -1,0 +1,132 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+html,
+body {
+  height: 100%;
+  font-family: Gilroy, hurmegeometricsans_no3_6, Almarai, Arial, sans-serif;
+  overflow-x: hidden;
+}
+.box {
+  padding: 0 15px;
+  max-width: 1200px;
+}
+.container {
+  max-width: 1170px;
+}
+.shadowbox {
+  box-shadow: 0 0 7px rgb(0 0 0 / 25%);
+}
+.center {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+@font-face {
+  font-family: hurmegeometricsans_no3_6;
+  src: url('../../font/bold.woff2');
+}
+@font-face {
+  font-family: Gilroy;
+  src: url('../../font/regular.woff2');
+}
+@font-face {
+  font-family: Almarai;
+  src: url('../../font/semibold.woff2');
+}
+li {
+  list-style-type: none;
+}
+a {
+  text-decoration: none;
+}
+/* box maxwidth 1169px */
+/* banner maxwidth 1299px 100%*/
+// 红色按钮
+.colorBtn {
+  font-size: 16px;
+  line-height: 22px;
+  font-weight: 700;
+  color: #fff;
+  width: 141px;
+  height: 42px;
+  min-height: 42px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ff4a64;
+  max-width: 220px;
+  text-align: center;
+  border-radius: 4px;
+  transition: all 300ms ease;
+  border: none;
+  cursor: pointer;
+  align-self: flex-end;
+  &::after {
+    content: '';
+    background: url(data:image/svg+xml;charset=utf,%3Csvg%20id%3D%22cta-arrow%22%20version%3D%221.1%22%20viewBox%3D%220%200%2011%2011%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cg%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%3Cpolygon%20points%3D%225.5%200%204.5375%200.9625%208.3875%204.8125%200%204.8125%200%206.1875%208.3875%206.1875%204.5375%2010.038%205.5%2011%2011%205.5%22%20fill%3D%22%23fff%22%20%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E)
+      no-repeat center;
+    background-size: 13px 13px;
+    height: 13px;
+    width: 0;
+    font-size: 13px;
+    padding-left: 6px;
+    opacity: 0;
+    transition: all 0.3s ease;
+  }
+  &:hover {
+    background-color: #bc284b;
+    color: #ffffff;
+    transition: all 0.3s ease;
+    &::after {
+      margin-left: 6px;
+      width: 13px;
+      opacity: 1;
+    }
+  }
+}
+// 暗紫按钮
+.colorBtn2 {
+  font-size: 16px;
+  line-height: 22px;
+  font-weight: 700;
+  color: #fff;
+  width: 160px;
+  height: 42px;
+  min-height: 42px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #010232;
+  max-width: 220px;
+  text-align: center;
+  border-radius: 4px;
+  transition: all 300ms ease;
+  border: none;
+  cursor: pointer;
+  align-self: flex-end;
+  &::after {
+    content: '';
+    background: url(data:image/svg+xml;charset=utf,%3Csvg%20id%3D%22cta-arrow%22%20version%3D%221.1%22%20viewBox%3D%220%200%2011%2011%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cg%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%3Cpolygon%20points%3D%225.5%200%204.5375%200.9625%208.3875%204.8125%200%204.8125%200%206.1875%208.3875%206.1875%204.5375%2010.038%205.5%2011%2011%205.5%22%20fill%3D%22%23fff%22%20%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E)
+      no-repeat center;
+    background-size: 13px 13px;
+    height: 13px;
+    width: 0;
+    font-size: 13px;
+    padding-left: 6px;
+    opacity: 0;
+    transition: all 0.3s ease;
+  }
+  &:hover {
+    background-color: #050653;
+    color: #ffffff;
+    transition: all 0.3s ease;
+    &::after {
+      margin-left: 6px;
+      width: 13px;
+      opacity: 1;
+    }
+  }
+}

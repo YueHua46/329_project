@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>作业1</title>
+    <link rel="stylesheet" href="css/geekLists.css" />
+    <style>
+      .gd {
+        height: 100%;
+      }
+
+      .triangle {
+        width: 0;
+        height: 0;
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+        border-bottom: 10px solid skyblue;
+      }
+
+      .gd {
+        width: 160px;
+        border: 0.5px solid rgb(139, 139, 139);
+        border-radius: 5px;
+      }
+      .gd-list {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        background-color: #fff;
+      }
+      .gd-item {
+        display: flex;
+        justify-content: center;
+        gap: 5px;
+        margin-bottom: 5px;
+        padding-bottom: 5px;
+        border-bottom: 1px solid #e2e2e5;
+      }
+
+      .gd-item > img {
+        width: 30px;
+        height: 30px;
+      }
+      .gd-item > p {
+      }
+      .gd-item > p > span:first-of-type {
+        color: #000;
+        font-weight: bold;
+        font-size: 12px;
+        line-height: 1.1;
+        width: 80px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+      }
+      .gd-item > p > span:last-of-type {
+        color: #585f65;
+        line-height: 1.3;
+        font-size: 11px;
+      }
+      .gd-title {
+      }
+      .gd-title > .title {
+        display: block;
+        border-radius: 4px 4px 0 0;
+        background-color: #3f3a60;
+        padding: 7px;
+        margin-bottom: 0;
+        font-size: 11px;
+        text-transform: uppercase;
+        font-weight: 600;
+        color: #fff;
+        line-height: 1;
+        transition: all 0.2s ease-in-out;
+      }
+      .gd-title > div:last-of-type {
+        font-size: 11px;
+        margin-top: 5px;
+        margin-left: 5px;
+      }
+      .container {
+        padding: 20px;
+        display: flex;
+        gap: 20px;
+      }
+      li {
+        list-style: none;
+      }
+      header {
+        display: flex;
+        justify-content: space-between;
+        height: 70px;
+        background-color: #3f3a60;
+        padding: 10px;
+        font-weight: bold;
+      }
+      header .header-left {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+      }
+      header .header-left .header-menu {
+        display: flex;
+        margin-left: 10px;
+      }
+      header .header-left .header-list {
+        display: flex;
+        gap: 20px;
+        margin-left: 20px;
+      }
+      header .header-left .header-list a {
+        color: white !important;
+      }
+      header .header-left .header-list a:hover {
+        opacity: 0.75;
+      }
+      header .header-right {
+        display: flex;
+        align-items: center;
+      }
+      header .header-right ul {
+        display: flex;
+        gap: 20px;
+        align-items: center;
+      }
+      header .header-right ul li a {
+        color: white !important;
+      }
+      header .header-right ul li a:hover {
+        opacity: 0.75;
+      }
+      header .header-right ul .header-search {
+        display: flex;
+        height: 28px;
+        align-items: center;
+      }
+      header .header-right ul .header-search span {
+        font-size: 16px;
+        display: flex;
+        align-items: center;
+        left: 20px;
+        color: #9ca2a8 !important;
+      }
+      header .header-right ul .header-search input {
+        border-radius: 5px;
+        border: none;
+        padding-left: 28px;
+        height: 25px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- header -->
+    <header>
+      <div class="header-left">
+        <div class="header-menu">
+          <span class="glyphicon glyphicon-list" style="color: white"> </span>
+        </div>
+        <div class="header-logo">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="80"
+            height="38"
+            viewBox="0 0 80 38"
+          >
+            <g fill="none" fillRule="evenodd">
+              <path
+                fill="#FFF"
+                d="M41.6414127,20.8453307 C41.6414127,20.7138507 41.5623149,20.5562773 41.377073,20.5562773 L37.2504649,20.5562773 L37.2504649,24.470024 L41.377073,24.470024 C41.5623149,24.470024 41.6414127,24.338544 41.6414127,24.2073173 L41.6414127,20.8453307 Z M41.6414127,13.911344 C41.6414127,13.779864 41.5623149,13.622544 41.377073,13.622544 L37.2504649,13.622544 L37.2504649,17.2996773 L41.377073,17.2996773 C41.5623149,17.2996773 41.6414127,17.1681973 41.6414127,17.0103707 L41.6414127,13.911344 Z M32.6737649,27.8317573 L32.6737649,10.1032373 L43.6783083,10.1032373 C45.1334524,10.1032373 46.0591517,11.0223307 46.0591517,12.3353573 L46.0591517,16.2754507 C46.0591517,17.483344 45.2656223,18.6390507 43.6257465,19.0332373 C45.2656223,19.4269173 46.1915767,20.530184 46.1915767,21.7122373 L46.1915767,25.5730373 C46.1915767,26.9648507 45.2656223,27.8317573 43.8107333,27.8317573 L32.6737649,27.8317573 Z M57.7535044,16.9530667 L62.7609046,16.9530667 L62.7609046,25.8040267 C62.7609046,26.9597333 61.8619965,27.8263867 60.7242641,27.8263867 L51.7828972,27.8263867 C50.64542,27.8263867 49.7194656,26.9597333 49.7194656,25.8040267 L49.7194656,12.09388 C49.7194656,11.01696 50.64542,10.0978667 51.7828972,10.0978667 L62.7609046,10.0978667 L62.7609046,13.9062267 L54.5602501,13.9062267 C54.4280803,13.9062267 54.2959104,14.0374533 54.2959104,14.19528 L54.2959104,23.7031333 C54.2959104,23.8604533 54.4280803,23.9655867 54.5602501,23.9655867 L58.2640678,23.9655867 C58.4490546,23.9655867 58.5549435,23.8604533 58.5549435,23.7031333 L58.5549435,20.7087333 L56.1478193,20.7087333 L57.7535044,16.9530667 Z M74.3228322,16.9530667 L79.3304876,16.9530667 L79.3304876,25.8040267 C79.3304876,26.9597333 78.4313244,27.8263867 77.2938472,27.8263867 L68.3524802,27.8263867 C67.2147479,27.8263867 66.2890486,26.9597333 66.2890486,25.8040267 L66.2890486,12.09388 C66.2890486,11.01696 67.2147479,10.0978667 68.3524802,10.0978667 L79.3304876,10.0978667 L79.3304876,13.9062267 L71.1298332,13.9062267 C70.9976633,13.9062267 70.8652383,14.0374533 70.8652383,14.19528 L70.8652383,23.7031333 C70.8652383,23.8604533 70.9976633,23.9655867 71.1298332,23.9655867 L74.8333957,23.9655867 C75.0186376,23.9655867 75.1245266,23.8604533 75.1245266,23.7031333 L75.1245266,20.7087333 L72.7171472,20.7087333 L74.3228322,16.9530667 Z"
+              />
+              <polygon
+                fill="#FF5100"
+                points="24.87 7.01 21.107 8.035 24.792 0 .9 8.794 2.206 19.327 0 21.454 6.577 37.93 20.558 32.779 25.418 21.37 23.331 19.358"
+              />
+            </g>
+          </svg>
+        </div>
+        <ul class="header-list">
+          <li>
+            <a href="#">Browser</a>
+          </li>
+          <li>
+            <a href="#">Forums</a>
+          </li>
+          <li>
+            <a href="src/Page/GeeklistHot/tbsdemo.html">GeekLists</a>
+          </li>
+          <li>
+            <a href="../../Page/ShopGeekMarket/index.html">Shopping</a>
+          </li>
+          <li>
+            <a href="#">Community</a>
+          </li>
+          <li>
+            <a href="#">Help</a>
+          </li>
+        </ul>
+      </div>
+      <div class="header-right">
+        <ul>
+          <li>
+            <a href="#">Sign In</a>
+          </li>
+          <li>
+            <a href="#">Join!</a>
+          </li>
+          <li class="header-search">
+            <span class="glyphicon glyphicon-search" style="color: #333"></span>
+            <input placeholder="Search" type="text" />
+          </li>
+        </ul>
+      </div>
+    </header>
+    <!-- 侧边栏+context -->
+    <div class="container">
+      <div class="gd">
+        <div class="gd-list">
+          <div class="gd-title">
+            <div class="title">THE HOTNESS</div>
+            <div>
+              <span>GAME</span>
+            </div>
+          </div>
+          <div class="gd-item">
+            <img src="img/pic6513546.jpg" />
+            <p>
+              <span>Twilight:2000(4th Edition)</span>
+              <span>2021</span>
+            </p>
+            <span class="triangle"></span>
+          </div>
+          <div class="gd-item">
+            <img src="img\pic4412609.jpg" />
+            <p>
+              <span>Android:Shadow of the...</span>
+              <span>2018</span>
+            </p>
+            <span class="triangle"></span>
+          </div>
+          <div class="gd-item">
+            <img src="img\pic503490.jpg" />
+            <p>
+              <span>AI-Qadimland of Fate</span>
+              <span>1992</span>
+            </p>
+            <span class="triangle"></span>
+          </div>
+          <div class="gd-item">
+            <img src="img\pic2073834.jpg" />
+            <p>
+              <span>Dungeon Dragons Starter Set</span>
+              <span>2014</span>
+            </p>
+            <span class="triangle"></span>
+          </div>
+          <div class="gd-item">
+            <img src="img\pic5625807.png" />
+            <p>
+              <span>Alice is Missing</span>
+              <span>2020</span>
+            </p>
+            <span class="triangle"></span>
+          </div>
+          <div class="gd-item">
+            <img src="img\pic7026576.jpg" />
+            <p>
+              <span>Dragonlance:Shadow of the...</span>
+              <span>2022</span>
+            </p>
+            <span class="triangle"></span>
+          </div>
+          <div class="gd-item">
+            <img src="img\pic613939.jpg" />
+            <p>
+              <span>Call of Cthulhu(6th Edition)</span>
+              <span>2004</span>
+            </p>
+            <span class="triangle"></span>
+          </div>
+          <div class="gd-item">
+            <img src="img\pic4632921.png" />
+            <p>
+              <span>Shadow of the Demon Lord Core...</span>
+              <span>2015</span>
+            </p>
+            <span class="triangle"></span>
+          </div>
+          <div class="gd-item">
+            <img src="img\pic7061731.jpg" />
+            <p>
+              <span>Terror in the Old Fell Forest</span>
+              <span>2022</span>
+            </p>
+            <span class="triangle"></span>
+          </div>
+          <div class="gd-item">
+            <img src="img\pic508035.jpg" />
+            <p>
+              <span>Shadows Over Bogenhafen</span>
+              <span>1987</span>
+            </p>
+            <span class="triangle"></span>
+          </div>
+          <div class="gd-item">
+            <img src="img\pic502015.jpg" />
+            <p>
+              <span>Mouse Guard Roleplaying Game</span>
+              <span>2008</span>
+            </p>
+            <span class="triangle"></span>
+          </div>
+          <div class="gd-item">
+            <img src="img\pic2455572.jpg" />
+            <p>
+              <span>Dogs in the Vineyard</span>
+              <span>2004</span>
+            </p>
+            <span class="triangle"></span>
+          </div>
+          <div class="gd-item">
+            <img src="img\pic498668.jpg" />
+            <p>
+              <span>Ex Machina</span>
+              <span>2004</span>
+            </p>
+            <span class="triangle"></span>
+          </div>
+          <div class="gd-item">
+            <img src="img\pic512512.jpg" />
+            <p>
+              <span>Dread</span>
+              <span>2004</span>
+            </p>
+            <span class="triangle"></span>
+          </div>
+          <div class="gd-item">
+            <img src="img\pic515844.jpg" />
+            <p>
+              <span>The Star Wars Sourcebook</span>
+              <span>1987</span>
+            </p>
+            <span class="triangle"></span>
+          </div>
+        </div>
+      </div>
+      <div id="main">
+        <div id="searchDiv">
+          Search:<input type="text" /> Titles Only:&nbsp;<input
+            type="checkbox"
+          />
+          <button style="border: 2; padding: 2px 6px">Go</button>
+          <div style="float: right">
+            <nav>
+              <a href="">Index</a>
+              <a href="">All</a>
+              <a href="">Recent</a>
+              <a href="">Guidelines</a>
+            </nav>
+          </div>
+        </div>
+        <p></p>
+        <table>
+          <tbody>
+            <tr>
+              <td style="font-size: 10px; padding: 3px">
+                <a href="#">Article</a
+                >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="#">Edit</a>
+                <span>|</span>
+                <a href="#">History</a>
+                <span>|</span>
+                <a href="#">Editors</a>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <h2>
+                  Welcome to BoardGameGeek
+                  <img src="img/feed.png" alt="" />
+                </h2>
+                <em>
+                  This page is for board games. For RPGS, see
+                  <a href="#">RPGGeek</a>. For video games, see
+                  <a href="#">VideoGameGeek</a>.
+                </em>
+                <hr />
+                <h2>What is BoardGameGeek?</h2>
+                <p>
+                  <a href="#">BoardGameGeek</a> is an online resource and
+                  community that aims to be the definitive source for board game
+                  and card game content. The site is updated on a real-time
+                  basis by its large and still growing user base — more than two
+                  million registered users! — making the Geek the largest and
+                  most up-to-date place to get gaming information! You can
+                  become a registered member of BGG for free, although we
+                  welcome your contributions to the site in the form of ratings,
+                  reviews, and thoughts on games to the existing database!
+                </p>
+                <p>
+                  BGG features
+                  <a href="#"
+                    >reviews, ratings, images, play-aids, translations</a
+                  >
+                  and session reports from board game geeks around the world, as
+                  well as live discussion forums. In addition, every day nearly
+                  a hundred game trades pass through the hands of registered
+                  members, as well as transactions in the Geek Market. If you
+                  are new to the site and are wondering where to begin, you
+                  might start with the Guide to BoardGameGeek.
+                </p>
+                <h2>What kind of games are here?</h2>
+                <p>
+                  Here you'll find many types of board games, including
+                  thousands you've probably never seen in a store! We cover not
+                  only board games but also dice games, card games, tile-laying
+                  games, and games of dexterity. We have abstracts, economic
+                  games, dungeon crawls, city building, diplomacy and
+                  negotiation, trading, puzzle games, strategy games, party
+                  games, war games, and many more. We run the gamut from the
+                  light and whimsical Carcassonne to the serious and heavy
+                  empire-building of Twilight Imperium: Fourth Edition.
+                  Well-known games like Monopoly exist in the database as well,
+                  although you'll find almost all users prefer modern games that
+                  exhibit advancements in game play and component quality since
+                  Monopoly was first published.
+                </p>
+                <h2>How can I find opponents for these games?</h2>
+                <p>
+                  Start by reaching out to your friends or family — you have the
+                  makings of a great gaming group among people you already know!
+                  But there are also many ways to meet new people for playing
+                  these games. You might be lucky and have a game store that
+                  features board game nights, and you may even find the local
+                  nexus of board gamers in your community. Meeting up for game
+                  nights is an excellent way to try out many games. You might
+                  also find a local group in the Game Groups section of our
+                  Forum, or use our Forum to try to find people in your area.
+                  Our members are always looking for new players, and generally
+                  enjoy introducing people to these games. BoardGameGeek even
+                  facilitates finding individual gamers in your area by the
+                  Gamer Database.
+                </p>
+                <h2>Why should I register?</h2>
+
+                <ul>
+                  <li>Add a game to the database</li>
+                  <li>Contribute images to our database</li>
+                  <li>Post messages on our forums</li>
+                </ul>
+                <h2>
+                  <a href="#">REGISTER NOW!</a>
+                </h2>
+                <p>
+                  To fully use many of the site's features, you'll need a
+                  username. BGG registration is free. To add any content to the
+                  site, you must register. After you register you can:
+                </p>
+                <p>•••</p>
+                <p>
+                  Welcome to the board gaming community. Stay for a while. Stay
+                  forever...
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="#" style="display: block; text-align: right"
+                  >[What Links Here]
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div id="footerDiv">
+      <div>
+        <img src="img/bgg20220914192607.png" alt="" />
+      </div>
+      <div>
+        <h2>COMPANY</h2>
+        <ul>
+          <li>About</li>
+          <li>Contact</li>
+          <li>Advertise</li>
+          <li>Support BGG</li>
+        </ul>
+      </div>
+      <div>
+        <h2>POLICIES</h2>
+        <ul>
+          <li>Community Guidelines</li>
+          <li>Privacy</li>
+          <li>Terms</li>
+          <li>Manage Cookies</li>
+        </ul>
+      </div>
+      <div>
+        <h2>CONNECT</h2>
+        <div>
+          <img src="img/f20220914195849.png" alt="" />
+          <img src="img/t20220914195940.png" alt="" />
+          <img src="img/20220914200016.png" alt="" />
+          <img src="img/20220914200030.png" alt="" />
+        </div>
+      </div>
+    </div>
+    <div id="footerBlackDiv">
+      <p>
+        Geekdo, BoardGameGeek, the Geekdo logo, and the BoardGameGeek logo are
+        trademarks of BoardGameGeek, LLC.
+      </p>
+    </div>
+  </body>
+</html>

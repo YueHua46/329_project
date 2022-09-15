@@ -1,0 +1,56 @@
+.Card {
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: rgb(178, 178, 178) 0px 0px 5px;
+  gap: 10px;
+  .title {
+    display: flex;
+    justify-content: space-between;
+    p {
+      color: rgb(86, 86, 86);
+      cursor: pointer;
+    }
+    small {
+      color: rgb(86, 86, 86);
+    }
+  }
+  .list {
+    display: flex;
+    // overflow-x: hidden;
+    gap: 10px;
+    .item {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      p {
+        font-weight: bold;
+      }
+      small {
+        color: rgb(86, 86, 86);
+        height: 34px;
+      }
+      img {
+        width: 100%;
+        border-radius: 5px;
+      }
+      .slot1 > p {
+        font-size: 13px;
+        font-weight: 400;
+      }
+      .slot2 {
+        a {
+          display: flex;
+          align-items: center;
+          gap: 5px;
+          svg {
+            height: 100%;
+            font-size: 14px;
+          }
+        }
+      }
+    }
+  }
+}
