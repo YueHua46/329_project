@@ -20,6 +20,12 @@
 
    > yarn
 
+3. 运行
+
+   > yarn dev
+
+运行成功后在`http://localhost:5173/`访问网页
+
 ## 项目周期：
 
 **StartTime**：2022/09/14
