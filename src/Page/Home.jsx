@@ -241,7 +241,7 @@ export default (props) => {
           </div>
           <ul className="header-list">
             <li>
-              <a href="#">Browser</a>
+              <a href="src/Page/Browser/index.html">Browser</a>
             </li>
             <li>
               <a href="src/Page/BC/index.html">BackCheck</a>
